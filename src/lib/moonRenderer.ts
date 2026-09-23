@@ -1,4 +1,4 @@
-/** A dependency-free lunar globe. Coordinates match the HTML surface markers. */
+/** A dependency-free floating lunar globe with continuous spherical texture sampling. */
 export interface MoonRenderer {
   draw(yaw: number, pitch: number, zoom: number): void;
   resize(width: number, height: number): void;
@@ -36,8 +36,11 @@ void main() {
            - texture2D(u_height, uv - vec2(1.0 / 1024.0, 0.0)).r;
   float dy = texture2D(u_height, uv + vec2(0.0, 1.0 / 512.0)).r
            - texture2D(u_height, uv - vec2(0.0, 1.0 / 512.0)).r;
-  vec3 tangent = normalize(vec3(p.z, 0.0, -p.x) + vec3(0.0001));
-  vec3 bitangent = normalize(cross(p, tangent));
+  // Longitude has no direction at the poles: fade relief there instead of
+  // normalizing a zero vector or introducing a biased tangent.
+  vec3 tangent = vec3(p.z, 0.0, -p.x);
+  tangent *= inversesqrt(max(dot(tangent, tangent), 0.000001));
+  vec3 bitangent = cross(p, tangent);
   vec3 bump = normalize(p - tangent * dx * 0.7 - bitangent * dy * 0.7);
   bump = vec3(bump.x * cy + bump.z * sy, bump.y, -bump.x * sy + bump.z * cy);
   bump = vec3(bump.x, bump.y * cp - bump.z * sp, bump.y * sp + bump.z * cp);
@@ -147,8 +150,11 @@ export function createMoonRenderer(canvas: HTMLCanvasElement, onTextureError?: (
           // NASA maps have north at the image top; GLSL v increases northward.
           gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
           gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-          gl.generateMipmap(gl.TEXTURE_2D);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+          // atan wraps longitude from 1 to 0 at the map seam. Implicit mipmap
+          // derivatives mistake that jump for heavy minification, creating a
+          // blurred stripe (and a false ridge in the height map). Base-level
+          // linear sampling keeps REPEAT interpolation continuous on WebGL 1.
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
           // Redraw even when the OS has disabled automatic animation.
           renderer.draw(lastView.yaw, lastView.pitch, lastView.zoom);
         } catch { if (unit === 0) onTextureError?.(); }

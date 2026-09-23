@@ -8,3 +8,5 @@ Source page: https://svs.gsfc.nasa.gov/4720/ — CGI Moon Kit.
 - `lunar-height-1k.jpg`: grayscale elevation map, 1024 × 512, https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_3_8bit.jpg
 
 Downloaded 2026-09-23. Original files stored locally without alteration. Artistic lighting is applied at runtime; this is a decorative globe, not a scientific visualization. User-provided reference images guide the lighting and floating composition.
+
+- `seated-rabbit.png`: user-provided transparent seated astronaut rabbit, copied unchanged from the second reference image supplied in this task. This artwork is not NASA imagery.
