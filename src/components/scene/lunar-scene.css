@@ -7,7 +7,7 @@
 .lunar-floating-scene{aspect-ratio:1.1}
 .lunar-floating-scene .lunar-moon-wrap{width:87%;left:-1%;top:0;animation:lunar-float 8s ease-in-out infinite;filter:drop-shadow(0 0 25px #d8e2e714) drop-shadow(0 24px 35px #02050c50);cursor:grab}
 .lunar-floating-scene .lunar-moon-wrap.is-dragging{cursor:grabbing;animation-play-state:paused}
-.lunar-floating-scene .lunar-moon{touch-action:pan-y;outline-offset:3px}
+.lunar-floating-scene .lunar-moon{touch-action:none;outline-offset:3px}
 .lunar-hover-shadow{position:absolute;left:15%;bottom:5%;width:50%;height:8%;border-radius:50%;background:radial-gradient(ellipse,#adbed51f,#8da1bd07 42%,transparent 70%);filter:blur(9px);animation:lunar-shadow-drift 8s ease-in-out infinite;pointer-events:none}
 .lunar-floating-scene .lunar-rabbit{width:47%;height:69%;right:-1%;bottom:0;animation:lunar-rabbit-float 7s ease-in-out infinite;transform-origin:50% 50%}
 .lunar-floating-scene .lunar-scene-orbit{inset:18% -2% 23% -7%;border-color:#d7dfec20}
