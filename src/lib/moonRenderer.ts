@@ -44,10 +44,10 @@ void main() {
   vec3 bump = normalize(p - tangent * dx * 0.7 - bitangent * dy * 0.7);
   bump = vec3(bump.x * cy + bump.z * sy, bump.y, -bump.x * sy + bump.z * cy);
   bump = vec3(bump.x, bump.y * cp - bump.z * sp, bump.y * sp + bump.z * cp);
-  float sunlight = max(0.0, dot(bump, normalize(vec3(-0.48, 0.48, 0.91))));
-  float illumination = 0.22 + 0.86 * pow(sunlight, 0.70);
+  float sunlight = max(0.0, dot(bump, normalize(vec3(-0.78, 0.37, 0.58))));
+  float illumination = 0.09 + 1.06 * pow(sunlight, 0.82);
   float limb = 0.88 + 0.12 * pow(n.z, 0.3);
-  vec3 color = pow(terrain, vec3(1.06)) * illumination * limb * vec3(1.07, 1.055, 1.025);
+  vec3 color = pow(terrain, vec3(1.06)) * illumination * limb * vec3(1.10, 1.06, 1.01);
   float edge = smoothstep(0.0, 1.4 / u_radius, 1.0 - sqrt(rr));
   gl_FragColor = vec4(color, edge);
 }

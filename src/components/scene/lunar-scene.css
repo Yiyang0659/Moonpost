@@ -24,3 +24,12 @@
 @media(prefers-reduced-motion:reduce){.lunar-floating-scene .lunar-moon-wrap,.lunar-floating-scene .lunar-rabbit,.lunar-hover-shadow{animation:none!important}}
 .lunar-floating-scene + .post-open-label{margin-top:32px}
 .lunar-floating-scene .lunar-rabbit:hover,.lunar-floating-scene .lunar-rabbit:focus-visible{animation-play-state:paused}
+/* The landscape hero keeps the orbit behind the interactive globe. */
+.post-hero .lunar-scene{aspect-ratio:1.08;isolation:isolate}
+.post-hero .lunar-scene-halo{inset:4% 3% 3% -2%;background:radial-gradient(ellipse at 44% 46%,#e8d7be1d,transparent 68%)}
+.post-hero .lunar-scene-orbit{z-index:-1;inset:30% -2% 13% -11%;transform:rotate(-19deg);border-color:#fff0d7a8}
+.post-hero .lunar-scene-orbit:before{width:6px;height:6px;left:0;top:33%;background:#ffedd2;box-shadow:0 0 14px #ffe4ac}
+.post-hero .lunar-floating-scene .lunar-moon-wrap{width:84%;left:8%;top:2%;filter:drop-shadow(-15px -10px 26px #fff2d11b) drop-shadow(12px 16px 35px #01040994)}
+.post-hero .lunar-hover-shadow{display:none}
+.post-hero .lunar-interaction-hint{right:20%;bottom:0;font-size:10px;color:#c7c4be}
+@media(max-width:700px){.post-hero .lunar-scene-orbit{inset:29% -5% 15% -5%}.post-hero .lunar-floating-scene .lunar-moon-wrap{width:85%;left:4%;top:4%}.post-hero .lunar-interaction-hint{display:none}}
