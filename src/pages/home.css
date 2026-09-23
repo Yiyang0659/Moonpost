@@ -61,3 +61,10 @@
 @media(max-width:700px){.post-hero-rabbit{width:35%;right:-1%;bottom:33%}}
 @media(max-width:370px){.post-nav nav{gap:16px}.post-nav nav>button,.post-nav nav>a{flex:0 0 auto;white-space:nowrap;font-size:11px}}
 @media(min-width:1101px){.post-hero-aside{right:1%}}
+/* Hold the globe in the sky, independently of the foreground and hero height. */
+@media(min-width:701px){
+  .post-hero-visual .lunar-scene{width:min(78%,570px);left:8%;top:-3%}
+  .post-hero-rabbit{width:clamp(145px,13.5vw,210px);right:7%;bottom:14%}
+}
+@media(max-width:1250px) and (min-width:701px){.post-hero-aside{display:none}}
+@media(max-width:700px){.post-hero-visual .lunar-scene{width:clamp(245px,70%,300px);left:4%;top:-2%}}
