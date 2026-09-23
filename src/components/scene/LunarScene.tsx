@@ -1,19 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import './lunar-scene.css';
+import {createMoonRenderer} from '../../lib/moonRenderer';
 
-function createMoonTexture(){
- const width=1024,height=512,canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const context=canvas.getContext('2d')!;
- let seed=72436;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)|0;return(seed>>>0)/4294967296};
- // Seamless, interpolated noise gives the maria irregular coastlines rather than circular spots.
- const grids=[8,16,32,64,128].map(size=>({size,values:Float32Array.from({length:size*(size/2)},random)}));
- const noise=(x:number,y:number,layer:number)=>{const {size,values}=grids[layer],rows=size/2;const gx=x/width*size,gy=y/height*rows,ix=Math.floor(gx),iy=Math.floor(gy);let fx=gx-ix,fy=gy-iy;fx=fx*fx*(3-2*fx);fy=fy*fy*(3-2*fy);const at=(xx:number,yy:number)=>values[((yy+rows)%rows)*size+(xx+size)%size];return (at(ix,iy)*(1-fx)+at(ix+1,iy)*fx)*(1-fy)+(at(ix,iy+1)*(1-fx)+at(ix+1,iy+1)*fx)*fy};
- const image=context.createImageData(width,height);
- for(let y=0;y<height;y++)for(let x=0;x<width;x++){const broad=noise(x,y,0)*.65+noise(x,y,1)*.35;const maria=Math.max(0,Math.min(1,(broad-.46)*4.2));const terrain=noise(x,y,2)*.55+noise(x,y,3)*.3+noise(x,y,4)*.15;const value=181-maria*37+(terrain-.5)*23+(random()-.5)*6;const offset=(y*width+x)*4;image.data[offset]=value;image.data[offset+1]=value+.5;image.data[offset+2]=value-1;image.data[offset+3]=255}
- context.putImageData(image,0,0);
- // Small, softly lit crater rims: no solid black disks or high-contrast ring patterns.
- for(let i=0;i<1700;i++){const x=random()*width,y=random()*height,r=i<22?5+random()*8:.5+random()*3.5;for(const wrap of [-width,0,width]){const cx=x+wrap;const shade=context.createRadialGradient(cx+r*.17,y+r*.16,0,cx,y,r*1.2);shade.addColorStop(0,'rgba(91,94,96,.10)');shade.addColorStop(.57,'rgba(111,114,115,.06)');shade.addColorStop(.85,'rgba(217,219,218,.08)');shade.addColorStop(1,'rgba(190,192,192,0)');context.fillStyle=shade;context.fillRect(cx-r*1.2,y-r*1.2,r*2.4,r*2.4);context.beginPath();context.ellipse(cx,y,r*.8,r*.76,0,Math.PI*.96,Math.PI*1.79);context.strokeStyle='rgba(232,233,230,.12)';context.lineWidth=Math.max(.4,r*.1);context.stroke()}}
- return context.getImageData(0,0,width,height).data;
-}
 function RabbitFigure(){const uid=useId().replace(/:/g,'');const p=(key:string)=>`url(#${uid}${key})`;return <svg className="lunar-rabbit-svg" viewBox="0 0 340 430" fill="none" aria-hidden="true"><defs>
  <radialGradient id={`${uid}fur`} cx=".32" cy=".24" r=".8"><stop stopColor="#fffef6"/><stop offset=".5" stopColor="#e9e6dc"/><stop offset=".8" stopColor="#babcc0"/><stop offset="1" stopColor="#747e8d"/></radialGradient>
  <radialGradient id={`${uid}suit`} cx=".28" cy=".2" r=".9"><stop stopColor="#f6f6ef"/><stop offset=".4" stopColor="#d6dbe0"/><stop offset=".77" stopColor="#8895a4"/><stop offset="1" stopColor="#48596e"/></radialGradient>
@@ -23,7 +11,7 @@ function RabbitFigure(){const uid=useId().replace(/:/g,'');const p=(key:string)=
  <linearGradient id={`${uid}gold`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ede1bb"/><stop offset=".5" stopColor="#b4a079"/><stop offset="1" stopColor="#716858"/></linearGradient>
  <filter id={`${uid}shadow`} x="-.4" y="-.4" width="1.8" height="1.8"><feGaussianBlur stdDeviation="7"/></filter>
  </defs>
- <ellipse cx="178" cy="397" rx="97" ry="13" fill="#02060b" opacity=".55" filter={p('shadow')}/>
+
  <path d="M115 250q-31-29-40 3l1 74 32 14" fill="#627286" stroke="#b8c5d1" strokeWidth="2"/><path d="M95 267v44" stroke="#d6e0e5" strokeWidth="6" strokeLinecap="round"/>
  <ellipse cx="174" cy="310" rx="68" ry="71" fill={p('suit')}/><path d="M129 344q-16 15-23 39-1 17 22 17 35 1 32-25l-1-21" fill={p('suit')} stroke="#8191a0" strokeWidth="1.3"/><path d="M180 354q-1 25 7 36 13 17 39 5 13-5 5-22l-23-30" fill={p('suit')} stroke="#8191a0" strokeWidth="1.3"/>
  <path d="M111 387q18 8 41-3M191 387q17 2 37-9" stroke="#5d6c7d" strokeWidth="6" strokeLinecap="round"/>
@@ -47,14 +35,45 @@ function RabbitFigure(){const uid=useId().replace(/:/g,'');const p=(key:string)=
  </svg>}
 
 export default function LunarScene(){
- const root=useRef<HTMLDivElement>(null),canvas=useRef<HTMLCanvasElement>(null);const[greeting,setGreeting]=useState('');const timeout=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);const count=useRef(0);
- useEffect(()=>{const host=root.current,c=canvas.current;if(!host||!c)return;const ctx=c.getContext('2d',{alpha:true});if(!ctx)return;const size=360;c.width=size;c.height=size;const texture=createMoonTexture(),frame=ctx.createImageData(size,size);const pixels:{offset:number,u:number,v:number,light:number,edge:number}[]=[];const radius=size*.487;
- for(let y=0;y<size;y++)for(let x=0;x<size;x++){const nx=(x-size/2)/radius,ny=(y-size/2)/radius,r2=nx*nx+ny*ny;if(r2>1)continue;const nz=Math.sqrt(1-r2);const u=Math.atan2(nx,nz)/(Math.PI*2)+.5,v=Math.asin(ny)/Math.PI+.5;const light=Math.max(0,nx*-.51+ny*-.32+nz*.8);pixels.push({offset:(y*size+x)*4,u,v,light:.10+.91*Math.pow(light,.72),edge:Math.min(1,(1-r2)*radius)})}
- const draw=(angle:number)=>{for(const p of pixels){const u=((p.u+angle)%1+1)%1;const offset=(Math.floor(p.v*511)*1024+Math.floor(u*1023))*4;const brightness=p.light;frame.data[p.offset]=Math.min(255,texture[offset]*brightness*1.16);frame.data[p.offset+1]=Math.min(255,texture[offset+1]*brightness*1.16);frame.data[p.offset+2]=Math.min(255,texture[offset+2]*brightness*1.19);frame.data[p.offset+3]=255*p.edge}ctx.putImageData(frame,0,0)};
- const media=matchMedia('(prefers-reduced-motion: reduce)');let visible=true,raf=0,last=0,elapsed=0,lastPaint=0;const tick=(now:number)=>{if(!visible||document.hidden||media.matches){raf=0;return}const delta=last?Math.min(now-last,100):0;last=now;elapsed+=delta;if(now-lastPaint>65){draw(elapsed/160000);lastPaint=now}raf=requestAnimationFrame(tick)};const sync=()=>{cancelAnimationFrame(raf);raf=0;last=0;const active=visible&&!document.hidden&&!media.matches;host.classList.toggle('lunar-paused',!active);if(active)raf=requestAnimationFrame(tick)};draw(0);const observer=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting??false;sync()},{threshold:.03});observer.observe(host);document.addEventListener('visibilitychange',sync);media.addEventListener('change',sync);sync();return()=>{cancelAnimationFrame(raf);observer.disconnect();document.removeEventListener('visibilitychange',sync);media.removeEventListener('change',sync);clearTimeout(timeout.current);ctx.clearRect(0,0,size,size)};
+ const root=useRef<HTMLDivElement>(null),canvas=useRef<HTMLCanvasElement>(null);
+ const [greeting,setGreeting]=useState(''),[dragging,setDragging]=useState(false),[fallback,setFallback]=useState(false);
+ const timeout=useRef<ReturnType<typeof setTimeout>|undefined>(undefined),count=useRef(0);
+ const rotation=useRef(0),pointer=useRef<{id:number;x:number}|null>(null),lastInteraction=useRef(-Infinity),paint=useRef<()=>void>(()=>{});
+ useEffect(()=>{
+  const host=root.current,c=canvas.current;if(!host||!c)return;
+  const renderer=createMoonRenderer(c,()=>setFallback(true));if(!renderer)setFallback(true);
+  const media=matchMedia('(prefers-reduced-motion: reduce)');let visible=true,raf=0,last=0,lost=false;
+  const draw=()=>{if(!lost)renderer?.draw(rotation.current,-.04,1.13)};paint.current=draw;
+  const resize=()=>{renderer?.resize(c.clientWidth,c.clientHeight);draw()};
+  const sizeObserver=new ResizeObserver(resize);sizeObserver.observe(c);resize();
+  const tick=(now:number)=>{
+   raf=0;if(!visible||document.hidden||media.matches||lost)return;
+   const delta=last?Math.min(now-last,50):0;last=now;
+   if(!pointer.current&&now-lastInteraction.current>3500){rotation.current+=delta*.000024;draw()}
+   raf=requestAnimationFrame(tick);
+  };
+  const sync=()=>{cancelAnimationFrame(raf);raf=0;last=0;const active=visible&&!document.hidden&&!media.matches;host.classList.toggle('lunar-paused',!active);if(active&&!lost&&renderer)raf=requestAnimationFrame(tick)};
+  const observer=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting??false;sync()},{threshold:.03});observer.observe(host);
+  const cancelDrag=()=>{pointer.current=null;setDragging(false);sync()};
+  const contextLost=()=>{lost=true;cancelAnimationFrame(raf);setFallback(true)};
+  c.addEventListener('webglcontextlost',contextLost);document.addEventListener('visibilitychange',cancelDrag);media.addEventListener('change',sync);sync();
+  return()=>{cancelAnimationFrame(raf);observer.disconnect();sizeObserver.disconnect();c.removeEventListener('webglcontextlost',contextLost);document.removeEventListener('visibilitychange',cancelDrag);media.removeEventListener('change',sync);clearTimeout(timeout.current);paint.current=()=>{};renderer?.dispose()};
  },[]);
  const greet=()=>{const phrases=['月亮收到你的想念了。','今晚的月光，分你一半。','你好，地球来的朋友。','下一封信，要寄给谁？'];setGreeting(phrases[count.current++%phrases.length]);clearTimeout(timeout.current);timeout.current=setTimeout(()=>setGreeting(''),4200)};
- return <div ref={root} className={`lunar-scene ${greeting?'is-greeting':''}`} onPointerMove={event=>{if(event.pointerType==='touch'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const rect=event.currentTarget.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width-.5,y=(event.clientY-rect.top)/rect.height-.5;event.currentTarget.style.setProperty('--rabbit-x',`${x*9}px`);event.currentTarget.style.setProperty('--rabbit-y',`${y*6}px`);event.currentTarget.style.setProperty('--rabbit-turn',`${x*5}deg`)}} onPointerLeave={event=>{event.currentTarget.style.setProperty('--rabbit-x','0px');event.currentTarget.style.setProperty('--rabbit-y','0px');event.currentTarget.style.setProperty('--rabbit-turn','0deg')}}>
- <div className="lunar-scene-halo"/><div className="lunar-scene-orbit"/><div className="lunar-moon-wrap"><canvas ref={canvas} className="lunar-moon" role="img" aria-label="缓慢自转的立体月球，表面布满陨石坑"/></div><div className="lunar-coordinate" aria-hidden="true"><span>THE QUIET SIDE OF THE MOON</span><i>384,400 KM FROM HOME</i></div>
- <button className="lunar-rabbit" onClick={greet} aria-label="和玉兔邮差打招呼"><RabbitFigure/><span className="lunar-rabbit-ground"/></button><div className="lunar-greeting" role="status" aria-live="polite">{greeting}</div><div className="lunar-interaction-hint"><span/>轻触玉兔，打个招呼 <i>↗</i></div></div>
+ const release=()=>{pointer.current=null;lastInteraction.current=performance.now();setDragging(false)};
+ return <div ref={root} className={`lunar-scene lunar-floating-scene ${greeting?'is-greeting':''}`} onPointerMove={event=>{if(event.pointerType==='touch'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const rect=event.currentTarget.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width-.5,y=(event.clientY-rect.top)/rect.height-.5;event.currentTarget.style.setProperty('--rabbit-x',`${x*9}px`);event.currentTarget.style.setProperty('--rabbit-y',`${y*6}px`);event.currentTarget.style.setProperty('--rabbit-turn',`${x*5}deg`)}} onPointerLeave={event=>{event.currentTarget.style.setProperty('--rabbit-x','0px');event.currentTarget.style.setProperty('--rabbit-y','0px');event.currentTarget.style.setProperty('--rabbit-turn','0deg')}}>
+  <div className="lunar-scene-halo"/><div className="lunar-scene-orbit"/><div className="lunar-hover-shadow"/>
+  <div className={`lunar-moon-wrap ${dragging?'is-dragging':''} ${fallback?'lunar-moon-fallback':''}`}>
+   <canvas ref={canvas} className="lunar-moon" tabIndex={fallback?-1:0} role="img" aria-label="悬浮月球，可左右拖动旋转；键盘左右方向键旋转，Home 键复位" aria-describedby="lunar-drag-hint"
+    onPointerDown={e=>{if(pointer.current||fallback)return;pointer.current={id:e.pointerId,x:e.clientX};lastInteraction.current=performance.now();e.currentTarget.setPointerCapture(e.pointerId);setDragging(true)}}
+    onPointerMove={e=>{const p=pointer.current;if(!p||p.id!==e.pointerId)return;rotation.current+=(e.clientX-p.x)*.006;p.x=e.clientX;lastInteraction.current=performance.now();paint.current()}}
+    onPointerUp={e=>{if(pointer.current?.id===e.pointerId)release()}} onPointerCancel={release} onLostPointerCapture={release}
+    onKeyDown={e=>{if(!['ArrowLeft','ArrowRight','Home'].includes(e.key))return;e.preventDefault();rotation.current=e.key==='Home'?0:rotation.current+(e.key==='ArrowLeft'?-.16:.16);lastInteraction.current=performance.now();paint.current()}}/>
+   {fallback&&<span className="lunar-fallback-text" role="img" aria-label="悬浮月球插画"/>}
+  </div>
+  <div className="lunar-coordinate" aria-hidden="true"><span>THE QUIET SIDE OF THE MOON</span><i>384,400 KM FROM HOME</i></div>
+  <button className="lunar-rabbit" onClick={greet} aria-label="和玉兔邮差打招呼"><RabbitFigure/></button>
+  <div className="lunar-greeting" role="status" aria-live="polite">{greeting}</div>
+  <div className="lunar-interaction-hint" id="lunar-drag-hint"><span/>{fallback?'轻触玉兔，打个招呼':'左右滑动月球 · 轻触玉兔打招呼'} <i>↔</i></div>
+ </div>
 }
