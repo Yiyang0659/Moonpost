@@ -3,7 +3,7 @@ import './lunar-scene.css';
 import {createMoonRenderer} from '../../lib/moonRenderer';
 
 export default function LunarScene(){
- const root=useRef<HTMLDivElement>(null),canvas=useRef<HTMLCanvasElement>(null);
+ const root=useRef<HTMLDivElement>(null),canvas=useRef<HTMLCanvasElement>(null),orbit=useRef<SVGSVGElement>(null);
  const [dragging,setDragging]=useState(false),[fallback,setFallback]=useState(false);
  const rotation=useRef(0),tilt=useRef(-.04),pointer=useRef<{id:number;x:number;y:number}|null>(null),lastInteraction=useRef(-Infinity),paint=useRef<()=>void>(()=>{});
  useEffect(()=>{
@@ -19,7 +19,7 @@ export default function LunarScene(){
    if(!pointer.current&&now-lastInteraction.current>3500){rotation.current+=delta*.000024;draw()}
    raf=requestAnimationFrame(tick);
   };
-  const sync=()=>{cancelAnimationFrame(raf);raf=0;last=0;const active=visible&&!document.hidden&&!media.matches;host.classList.toggle('lunar-paused',!active);if(active&&!lost&&renderer)raf=requestAnimationFrame(tick)};
+  const sync=()=>{cancelAnimationFrame(raf);raf=0;last=0;const active=visible&&!document.hidden&&!media.matches;host.classList.toggle('lunar-paused',!active);if(active)orbit.current?.unpauseAnimations();else orbit.current?.pauseAnimations();if(active&&!lost&&renderer)raf=requestAnimationFrame(tick)};
   const observer=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting??false;sync()},{threshold:.03});observer.observe(host);
   const cancelDrag=()=>{pointer.current=null;setDragging(false);sync()};
   const contextLost=()=>{lost=true;cancelAnimationFrame(raf);setFallback(true)};
@@ -37,7 +37,12 @@ export default function LunarScene(){
     onKeyDown={e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;e.preventDefault();if(e.key==='Home'){rotation.current=0;tilt.current=-.04}else if(e.key==='ArrowLeft'||e.key==='ArrowRight'){rotation.current+=e.key==='ArrowLeft'?-.16:.16}else{tilt.current+=e.key==='ArrowUp'?-.16:.16;}lastInteraction.current=performance.now();paint.current()}}/>
    {fallback&&<span className="lunar-fallback-text" role="img" aria-label="悬浮月球插画"/>}
   </div>
-  <div className="lunar-scene-orbit" aria-hidden="true"/>
+  <svg ref={orbit} className="lunar-scene-orbit" viewBox="0 0 600 330" preserveAspectRatio="none" aria-hidden="true">
+   <ellipse cx="300" cy="165" rx="293" ry="135" fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke"/>
+   <circle r="4" className="lunar-orbit-star lunar-orbit-star-primary"><animateMotion dur="32s" repeatCount="indefinite" path="M593 165 A293 135 0 1 1 7 165 A293 135 0 1 1 593 165"/></circle>
+   <circle r="2.4" className="lunar-orbit-star lunar-orbit-star-secondary"><animateMotion dur="32s" begin="-10.67s" repeatCount="indefinite" path="M593 165 A293 135 0 1 1 7 165 A293 135 0 1 1 593 165"/></circle>
+   <circle r="2.4" className="lunar-orbit-star lunar-orbit-star-secondary"><animateMotion dur="32s" begin="-21.33s" repeatCount="indefinite" path="M593 165 A293 135 0 1 1 7 165 A293 135 0 1 1 593 165"/></circle>
+  </svg>
   <span className="lunar-interaction-hint" id="lunar-drag-hint">{fallback?'月面静静等你来信':'拖动月球旋转；方向键也可操作'}</span>
  </div>
 }

@@ -68,3 +68,73 @@
 }
 @media(max-width:1250px) and (min-width:701px){.post-hero-aside{display:none}}
 @media(max-width:700px){.post-hero-visual .lunar-scene{width:clamp(245px,70%,300px);left:4%;top:-2%}}
+
+/* Separate sky treatments: the photographic hero has its own meteors;
+   subsequent screens share a quieter, continuous night sky. */
+.post-home{
+  background-color:#0a1019;
+  background-image:
+    radial-gradient(circle at 12% 18%,#dcecff75 0 1px,transparent 1.7px),
+    radial-gradient(circle at 76% 40%,#fff0d059 0 .8px,transparent 1.6px),
+    radial-gradient(circle at 41% 83%,#d9eaff61 0 .7px,transparent 1.5px),
+    radial-gradient(circle at 92% 12%,#dceaff4d 0 .8px,transparent 1.5px),
+    linear-gradient(135deg,#0b121d,#101725 56%,#0a1019);
+  background-size:410px 350px,540px 430px,620px 390px,730px 510px,auto;
+}
+.post-hero-landscape::before,
+.post-map::before,
+.post-passport::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle at 8% 14%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 21% 52%,#d7eaff 0 1px,transparent 2px),
+    radial-gradient(circle at 38% 23%,#ffe6bd 0 1px,transparent 2.2px),
+    radial-gradient(circle at 57% 72%,#f3f8ff 0 .8px,transparent 2px),
+    radial-gradient(circle at 73% 13%,#dceaff 0 1px,transparent 2.2px),
+    radial-gradient(circle at 89% 45%,#fff2d2 0 1px,transparent 2.3px),
+    radial-gradient(circle at 96% 80%,#dbeaff 0 .8px,transparent 2px);
+  filter:drop-shadow(0 0 4px #e8f4ff);
+  animation:post-star-twinkle 6.5s ease-in-out infinite alternate;
+}
+.post-hero-landscape::before{opacity:.66}
+.post-map,.post-passport{position:relative;isolation:isolate}
+.post-map::before,.post-passport::before{z-index:-1;opacity:.55}
+.post-passport::before{animation-delay:-3s;background-position:80px 20px}
+.post-hero-landscape::after,
+.post-map::after,
+.post-passport::after{
+  content:'';
+  position:absolute;
+  left:83%;
+  top:13%;
+  width:clamp(90px,11vw,190px);
+  height:2px;
+  border-radius:100%;
+  background:linear-gradient(90deg,transparent 0%,#cfe3ff38 45%,#fff9e9 100%);
+  box-shadow:0 0 9px 1px #d7e9ff61;
+  pointer-events:none;
+  opacity:0;
+  transform:translate3d(80px,-45px,0) rotate(-31deg);
+  animation:post-meteor 13s linear infinite;
+}
+.post-hero-landscape::after{animation-delay:-4s}
+.post-map::after{z-index:-1;top:24%;animation-delay:-8s;animation-duration:17s}
+.post-passport::after{z-index:-1;left:88%;top:18%;animation-delay:-11s;animation-duration:19s}
+@keyframes post-star-twinkle{
+  0%,18%{opacity:.22;filter:drop-shadow(0 0 1px #e8f4ff)}
+  58%{opacity:.76;filter:drop-shadow(0 0 5px #e8f4ff)}
+  100%{opacity:.38;filter:drop-shadow(0 0 2px #ffe4b6)}
+}
+@keyframes post-meteor{
+  0%,75%{opacity:0;transform:translate3d(80px,-45px,0) rotate(-31deg)}
+  77%{opacity:.9}
+  84%{opacity:0;transform:translate3d(-350px,190px,0) rotate(-31deg)}
+  100%{opacity:0;transform:translate3d(-350px,190px,0) rotate(-31deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  .post-hero-landscape::before,.post-map::before,.post-passport::before{animation:none;opacity:.5}
+  .post-hero-landscape::after,.post-map::after,.post-passport::after{animation:none;opacity:0}
+}

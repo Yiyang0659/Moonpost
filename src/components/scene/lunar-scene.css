@@ -33,3 +33,25 @@
 .post-hero .lunar-hover-shadow{display:none}
 .post-hero .lunar-interaction-hint{right:20%;bottom:0;font-size:10px;color:#c7c4be}
 @media(max-width:700px){.post-hero .lunar-scene-orbit{inset:29% -5% 15% -5%}.post-hero .lunar-floating-scene .lunar-moon-wrap{width:85%;left:4%;top:4%}.post-hero .lunar-interaction-hint{display:none}}
+
+/* The ring uses the globe's scene coordinates, so both keep the same scale at every viewport. */
+.post-hero .lunar-scene-orbit{
+  inset:auto;
+  left:-5%;
+  top:19%;
+  width:110%;
+  height:60%;
+  border:0;
+  color:#f9e9cd;
+  overflow:visible;
+  transform:rotate(-19deg);
+  animation:lunar-orbit-float 8s ease-in-out infinite;
+}
+.post-hero .lunar-scene-orbit ellipse{opacity:.72;filter:drop-shadow(0 0 3px #fff3d685)}
+.post-hero .lunar-orbit-star{fill:#fff9e9;filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px #ffe2a7)}
+.post-hero .lunar-orbit-star-secondary{opacity:.78}
+@keyframes lunar-orbit-float{
+  0%,100%{transform:translateY(0) rotate(-19deg)}
+  50%{transform:translateY(-13px) rotate(-19deg)}
+}
+@media(prefers-reduced-motion:reduce){.post-hero .lunar-scene-orbit{animation:none!important}}
