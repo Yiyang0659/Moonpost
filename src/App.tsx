@@ -1,0 +1,15 @@
+import {useEffect,useState} from 'react';
+import {Routes,Route,useLocation,Link} from 'react-router-dom';
+import PostcardPage from './pages/PostcardPage';
+import CosmicBackground from './components/scene/CosmicBackground';
+import HomePage from './pages/HomePage';
+import MooncakePage from './pages/MooncakePage';
+import QuizPage from './pages/QuizPage';
+import PersonaPage from './pages/PersonaPage';
+import WallPage from './pages/WallPage';
+import ParkourPage from './pages/ParkourPage';
+import GameLayout from './components/game/GameLayout';
+import SoundToggle from './components/game/SoundToggle';
+import {SoundProvider} from './hooks/useSound';
+function AppContent(){const location=useLocation();const[message,setMessage]=useState('');useEffect(()=>{if(location.pathname==='/' && location.search.includes('section=')){requestAnimationFrame(()=>document.querySelector(location.search.includes('passport')?'#post-passport':'[data-scene="1"]')?.scrollIntoView({behavior:'instant'}));}else{window.scrollTo(0,0);}},[location.pathname,location.search]);useEffect(()=>{let timer:ReturnType<typeof setTimeout>;const onToast=(e:Event)=>{setMessage((e as CustomEvent<string>).detail);clearTimeout(timer);timer=setTimeout(()=>setMessage(''),3200);};window.addEventListener('moon:toast',onToast);return()=>{clearTimeout(timer);window.removeEventListener('moon:toast',onToast);};},[]);return <><CosmicBackground/>{location.pathname==='/'&&<div className="home-sound"><SoundToggle/></div>}<Routes><Route path="/" element={<HomePage/>}/><Route element={<GameLayout/>}><Route path="/mooncake" element={<MooncakePage/>}/><Route path="/quiz" element={<QuizPage/>}/><Route path="/persona" element={<PersonaPage/>}/><Route path="/wall" element={<WallPage/>}/><Route path="/postcard" element={<PostcardPage/>}/><Route path="/parkour" element={<ParkourPage/>}/></Route><Route path="*" element={<div className="intro-panel"><h1>月亮在下一站等你</h1><Link className="btn" to="/">返回探索地图</Link></div>}/></Routes><div className={'toast '+(message?'visible':'')} role="status">{message}</div></>}
+export default function App(){return <SoundProvider><AppContent/></SoundProvider>}

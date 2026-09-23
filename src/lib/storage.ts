@@ -1,0 +1,4 @@
+export function get<T>(key:string,fallback:T):T{try{return JSON.parse(localStorage.getItem('moon-garden:'+key)||'null')??fallback;}catch{return fallback;}}
+export function set(key:string,value:unknown){try{localStorage.setItem('moon-garden:'+key,JSON.stringify(value));}catch{window.dispatchEvent(new CustomEvent('moon:toast',{detail:'当前浏览器无法保存，关闭页面后记录可能丢失。'}));}}
+export function award(id:string){const stored=get<unknown>('stamps',[]);const current=Array.isArray(stored)?stored.filter(v=>typeof v==='string'):[];if(!current.includes(id)){set('stamps',[...current,id]);window.dispatchEvent(new CustomEvent('moon:toast',{detail:'一盏游园灯已点亮，愿你月圆事事圆。'}));window.dispatchEvent(new Event('moon:stamp'));}}
+export const toast=(text:string)=>window.dispatchEvent(new CustomEvent('moon:toast',{detail:text}));

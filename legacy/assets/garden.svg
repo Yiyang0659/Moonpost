@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" fill="none">
+<defs>
+ <pattern id="paper" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1" cy="2" r=".65" fill="#684d2d" opacity=".09"/><circle cx="5" cy="6" r=".4" fill="#684d2d" opacity=".12"/></pattern>
+ <pattern id="moonlines" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 8L8 0" stroke="#f7e8b8" stroke-width=".5" opacity=".6"/></pattern>
+ <clipPath id="scene"><path d="M85 493V285a285 285 0 0 1 570 0v208Z"/></clipPath>
+ <g id="cloud"><path d="M0 22h28c-21-31 26-50 35-18C87-13 119 7 105 25h37c26 0 25 17 0 17H8C-12 42-18 22 0 22Z" fill="#f7f3e9" stroke="#a6ac8e" stroke-width="1.1"/><path d="M31 24h32c14 0 15-16 5-17M102 33h35" stroke="#a6ac8e" stroke-width="1.1"/></g>
+ <g id="flower"><path d="M0-8c10-12 15 0 8 6 16-3 16 10 5 11 10 10-1 17-8 7-4 15-16 10-10 0-13 5-17-8-4-11-14-6-7-16 2-9Z" fill="#dab36e"/><circle r="2.5" fill="#ae4935"/></g>
+ <g id="leaf"><path d="M0 0Q-35-37-54-25Q-35 8 0 0Z" fill="#64816b"/><path d="M-3-2L-45-22" stroke="#f1ebd9" stroke-width=".7"/></g>
+</defs>
+<path d="M75 500V289a295 295 0 0 1 590 0v211" stroke="#bbc2aa"/><path d="M65 501V289a305 305 0 0 1 610 0v212" stroke="#d6d8c3" stroke-dasharray="2 7"/>
+<g clip-path="url(#scene)">
+ <path d="M85 493V285a285 285 0 0 1 570 0v208Z" fill="#dce3ce"/>
+ <circle cx="409" cy="228" r="159" fill="#e7be73"/><circle cx="409" cy="228" r="148" stroke="#f5dfab"/><circle cx="409" cy="228" r="159" fill="url(#moonlines)"/>
+ <circle cx="346" cy="160" r="23" stroke="#d2a960" opacity=".5"/><circle cx="451" cy="295" r="30" stroke="#d2a960" opacity=".5"/><circle cx="472" cy="139" r="14" stroke="#d2a960" opacity=".5"/>
+ <path d="M51 375Q117 228 170 312Q213 219 263 333Q326 227 383 351Q447 281 494 340Q545 240 599 341L688 268V530H51Z" fill="#bccab0"/>
+ <path d="M50 416Q139 295 210 379Q267 310 310 415Q386 332 446 401Q535 303 608 390Q668 350 710 409V540H50Z" fill="#92ad94"/>
+ <path d="M68 484Q206 375 351 460T668 430V545H68Z" fill="#52765f"/>
+ <path d="M370 536Q581 475 534 445Q466 407 487 387Q513 368 535 361" stroke="#dce3ce" stroke-width="18"/>
+ <path d="M360 536Q571 476 529 447Q458 408 483 384" stroke="#f6eed9" stroke-width="1"/>
+ <g stroke="#284e40" stroke-width="2">
+  <path d="M519 350h72v69h-72Z" fill="#eadfc0"/><path d="M530 350v69m50-69v69"/><path d="M510 350h90l-46-35Z" fill="#ae4935"/><path d="M500 348q55-17 54-42q1 25 56 42Z" fill="#284e40"/>
+  <path d="M528 310h53v-40h-53Z" fill="#eadfc0"/><path d="M519 271h72l-37-24Z" fill="#ae4935"/><path d="M513 268q42-10 41-31q1 21 43 31Z" fill="#284e40"/>
+  <path d="M540 242v-31h28v31" fill="#eadfc0"/><path d="M528 213q27-8 27-28q0 20 28 28Z" fill="#284e40"/>
+  <path d="M549 419v-33q8-14 16 0v33" fill="#284e40"/><path d="M544 276v26m17-26v26"/>
+ </g>
+ <g fill="#f7f3e9" opacity=".5"><circle cx="167" cy="202" r="2"/><circle cx="576" cy="175" r="2"/><circle cx="265" cy="107" r="2"/><path d="M326 44v14m-7-7h14M596 237v12m-6-6h12" stroke="#f7f3e9" stroke-width="2"/></g>
+ <path d="M85 493V285a285 285 0 0 1 570 0v208Z" fill="url(#paper)"/>
+</g>
+<use href="#cloud" transform="translate(496 86) scale(.9)"/>
+<use href="#cloud" transform="translate(166 186) scale(1.03)"/>
+<use href="#cloud" transform="translate(438 280) scale(.65)"/>
+<path d="M34 493h673" stroke="#284e40" stroke-width="1.5"/>
+<path d="M20 505h702M60 515h616" stroke="#bac1a6"/>
+<!-- Osmanthus branch, its leaves and little golden blossoms -->
+<path d="M126 488Q177 424 152 310Q135 229 69 200M151 351Q81 319 52 256M152 322Q185 272 201 238M151 411Q216 374 230 342" stroke="#49654d" stroke-width="5"/>
+<g><use href="#leaf" transform="translate(111 222) rotate(7)"/><use href="#leaf" transform="translate(135 257) rotate(-35)"/><use href="#leaf" transform="translate(143 295) rotate(155)"/><use href="#leaf" transform="translate(84 302) rotate(20)"/><use href="#leaf" transform="translate(68 282) rotate(77)"/><use href="#leaf" transform="translate(166 294) rotate(105)"/><use href="#leaf" transform="translate(187 260) rotate(157)"/><use href="#leaf" transform="translate(208 374) rotate(155)"/><use href="#leaf" transform="translate(169 395) rotate(52)"/></g>
+<g><use href="#flower" transform="translate(102 242) scale(.62)"/><use href="#flower" transform="translate(92 255) scale(.4)"/><use href="#flower" transform="translate(177 286) scale(.55)"/><use href="#flower" transform="translate(159 345) scale(.72)"/><use href="#flower" transform="translate(183 373) scale(.6)"/><use href="#flower" transform="translate(123 313) scale(.4)"/><use href="#flower" transform="translate(213 255) scale(.47)"/></g>
+<!-- Lantern on the branch -->
+<path d="M78 218v99" stroke="#284e40"/><path d="M60 318h37v9H60Z" fill="#284e40"/>
+<path d="M52 328q-12 45 7 73h40q20-28 8-73Z" fill="#b5533d" stroke="#8a3d2c"/><path d="M65 329q-7 39 2 69m14-69v69m16-69q7 39-3 69" stroke="#e3a574"/><path d="M59 401h41v7H59Z" fill="#284e40"/><path d="M80 408v34m-5-15v18m10-18v18" stroke="#ae4935" stroke-width="2"/>
+<circle cx="80" cy="364" r="15" fill="#f1d6a0"/><text x="80" y="370" font-size="18" text-anchor="middle" fill="#ae4935" font-family="serif">月</text>
+<!-- Jade rabbit -->
+<g stroke="#284e40" stroke-width="2.5" stroke-linejoin="round">
+ <path d="M338 482q-38-45-6-73q8-46 51-44q40 2 44 46q49 35 14 79Z" fill="#fff9e9"/>
+ <path d="M350 378q-44-78-14-85q25-5 35 80M384 369q-10-91 22-87q26 10-8 92" fill="#fff9e9"/>
+ <path d="M351 349q-19-38-12-42m53 40q0-37 9-50" stroke="#d9a595" stroke-width="6" stroke-linecap="round"/>
+ <path d="M433 449q35-14 32 11q-2 26-27 22" fill="#fff9e9"/>
+ <ellipse cx="348" cy="484" rx="27" ry="11" fill="#fff9e9"/><ellipse cx="421" cy="484" rx="27" ry="11" fill="#fff9e9"/>
+ <path d="M345 414q32 17 68-1l1 13q-36 16-70 0Z" fill="#ae4935" stroke="#ae4935"/><path d="M402 424l26 19l-14 12l-27-27" fill="#ae4935" stroke="#ae4935"/>
+ <path d="M350 393h1m44-2h1" stroke-width="5" stroke-linecap="round"/><path d="M370 401l6 3l5-4m-5 4v6" stroke-width="1.5"/>
+ <ellipse cx="344" cy="402" rx="7" ry="4" fill="#e7b5a0" stroke="none"/><ellipse cx="404" cy="401" rx="7" ry="4" fill="#e7b5a0" stroke="none"/>
+ <path d="M351 444q-3 17 20 20m33-21q5 18-19 22" fill="#fff9e9"/>
+</g>
+<g transform="translate(377 454)"><path d="M0-19q6-7 12 0q10-3 12 7q8 6 0 13q3 10-8 12q-6 8-14 1q-10 3-13-7q-8-7-1-15q-2-8 12-11Z" fill="#dcaf62" stroke="#a47436" stroke-width="2"/><circle r="12" stroke="#a47436"/><text y="5" text-anchor="middle" font-family="serif" font-size="13" fill="#825321">团</text></g>
+<g fill="#62816b" stroke="#284e40" stroke-width="1"><path d="M256 491q-36-31-18-34q17 1 18 34Z"/><path d="M257 491q-8-41 10-36q11 7-10 36Z"/><path d="M278 492q-1-26 13-24q3 8-13 24Z"/><path d="M584 492q-27-40-8-39q11 7 8 39Z"/><path d="M583 492q15-47 30-34q4 11-30 34Z"/></g>
+<g stroke="#ae4935" stroke-width="1.4"><path d="M681 230v23m-11-11h22M270 52v14m-7-7h14M41 396v15m-7-8h14"/></g>
+<g fill="#ae4935"><circle cx="235" cy="308" r="3"/><circle cx="602" cy="294" r="2.5"/><circle cx="276" cy="411" r="2"/></g>
+<path d="M209 552h80m175 0h80" stroke="#b6bca5"/>
+<text x="377" y="558" text-anchor="middle" font-family="serif" letter-spacing="5" font-size="16" fill="#52705a">好时节 · 愿团圆</text>
+</svg>

@@ -1,0 +1,17 @@
+.postcard-intro{margin:25px 0 40px}.postcard-intro h2{font-size:clamp(28px,3vw,46px);letter-spacing:-.05em;margin:12px 0}.postcard-intro>p:last-child{color:var(--muted);line-height:1.8}.postcard-workspace{display:grid;grid-template-columns:1.6fr 1fr;gap:38px;align-items:start}.postcard-preview{padding:28px;background:#171b22;border-radius:18px;position:sticky;top:180px}.postcard-preview svg{width:100%;height:auto;display:block;filter:drop-shadow(0 12px 10px #00000045)}.postcard-preview>p{font-size:12px;color:#a0a5af;text-align:center;margin:24px 0 0}.postcard-form{background:#1b1e24;border:1px solid var(--border);padding:30px;border-radius:18px;display:flex;flex-direction:column;gap:14px}.postcard-form h3{font-size:23px;margin:0 0 14px}.postcard-form label{display:flex;justify-content:space-between;font-size:13px;font-weight:600}.postcard-form input,.postcard-form textarea{background:#13161c;border:1px solid #ffffff1c;color:var(--ink);border-radius:8px;padding:13px;resize:vertical;line-height:1.7}.postcard-palettes{display:flex;gap:9px;margin-bottom:10px}.postcard-palettes button{padding:12px 10px;border:2px solid;border-radius:8px;font-size:12px;flex:1}.postcard-form small{font-size:11px;color:var(--muted);text-align:center}.postcard-form label span{color:var(--muted)}@media(max-width:800px){.postcard-workspace{grid-template-columns:1fr}.postcard-preview{position:static;padding:18px}.postcard-form{padding:22px}.postcard-intro{margin-top:8px}}
+
+.postcard-preview{border:1px solid #ffffff12;background:radial-gradient(ellipse at 50% 25%,#bcd6e906,transparent 70%),#171b22;box-shadow:inset 0 1px 0 #ffffff03}
+.postcard-form{background:linear-gradient(145deg,#202329,#1b1e24);box-shadow:0 14px 45px #00000020}
+.postcard-form h3,.postcard-form label{color:#e4e8ee}
+.postcard-form input,.postcard-form textarea{font-family:inherit;font-size:14px;color:#eef0f4;outline:none;transition:border-color .2s}
+.postcard-form input::placeholder,.postcard-form textarea::placeholder{color:#747c89}
+.postcard-form input:focus,.postcard-form textarea:focus{border-color:#bcd6e974}
+/* Paper palette chips preview the exported artwork while staying dark in the editor. */
+.postcard-palettes button{background:#ffffff04!important;color:#bfc9d5!important;border-color:#ffffff12!important;transition:transform .22s,opacity .22s,border-color .22s}
+.postcard-palettes button[aria-pressed="true"]{background:#bcd6e90b!important;border-color:#bcd6e969!important;color:#e1edf6!important}
+.postcard-palettes button:hover{transform:translateY(-2px)}
+.postcard-form .btn{background:#ffffff04;border-color:#ffffff1c;color:#c6d6e3;transition:transform .22s,opacity .22s}
+.postcard-form .btn-primary{background:linear-gradient(135deg,#d3dfe9,#bcd0df);color:#151a21;border-color:#e3effc44}
+.postcard-form .btn:hover{transform:translateY(-2px)}
+.postcard-form .btn-primary:hover{background:linear-gradient(135deg,#e0e9f0,#c9dce9);color:#151a21}
+@media(prefers-reduced-motion:reduce){.postcard-form *{transition:none!important}}

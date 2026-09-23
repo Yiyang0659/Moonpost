@@ -1,0 +1,2 @@
+import {useSound} from '../../hooks/useSound';
+export default function SoundToggle(){const{enabled,toggle}=useSound();return <button className="sound-toggle" aria-pressed={enabled} aria-label={enabled?'关闭互动音效':'开启互动音效'} title={enabled?'关闭音效':'开启音效'} onClick={toggle}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M11 4L6 8H3v8h3l5 4V4Z"/><path d="M15 8q4 4 0 8"/>{enabled?<path d="M18 4q7 8 0 16"/>:<path d="m18 9 4 6m0-6-4 6"/>}</svg></button>}
