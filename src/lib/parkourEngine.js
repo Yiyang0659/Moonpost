@@ -1,3 +1,5 @@
+import { startActivity, finishActivity } from './analytics';
+
 const RUN_FRAMES = [
   [22,170,193,330], [220,175,180,325], [403,177,176,323], [580,176,194,324],
   [777,169,176,331], [955,181,183,319], [1139,185,194,315], [1334,176,202,324],
@@ -108,6 +110,7 @@ export function mountParkour(root,ctx){
   }
   function finish(won){
     if(!active) return;
+    finishActivity('parkour', { outcome: won ? 'won' : 'lost', distance: Math.floor(distance), mooncakes, passports, stage: stage + 1 });
     active = false;
     $('.arc-pause').disabled = true;
     $('.arc-run').textContent = '再跑一次';
@@ -146,6 +149,7 @@ export function mountParkour(root,ctx){
     spawnIn = Math.max(.88,1.25-stage*.1) + Math.random()*.55;
   }
   function start(){
+    startActivity('parkour');
     active = true; paused = false; last = 0; time = distance = uiElapsed = 0; stage = mooncakes = passports = 0; life = 3;
     shield = magnet = dash = invincible = 0; bunnyY = GROUND; velocityY = jumps = landing = dustTimer = 0; dust = [];
     objects = [.43,.53,.63,.73].map((part,i) => ({type:'mooncake',flavor:i,x:W*part,y:GROUND-58-(i%2)*10,hit:false}));

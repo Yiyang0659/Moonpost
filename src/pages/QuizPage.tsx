@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { QUESTIONS } from '../data/content';
 import { award, get, set } from '../lib/storage';
 import { recordQuiz } from '../lib/journey';
+import { startActivity, finishActivity } from '../lib/analytics';
 import ActivityHero from './ActivityHero';
 import './shared-activities.css';
 
@@ -23,9 +24,12 @@ export default function QuizPage() {
   const [correct, setCorrect] = useState(0);
   const [best, setBest] = useState(() => get<number>('quiz-best', 0));
   const selectedAnswers = useRef<number[]>([]);
+  const activityStarted = useRef(false);
   const question = round[index];
 
   const start = () => {
+    startActivity('quiz');
+    activityStarted.current = true;
     selectedAnswers.current = [];
     setRound(makeRound());
     setIndex(0);
@@ -35,6 +39,7 @@ export default function QuizPage() {
   };
   const answer = (option: number) => {
     if (chosen !== null) return;
+    if (!activityStarted.current) { startActivity('quiz'); activityStarted.current = true; }
     selectedAnswers.current[index] = option;
     setChosen(option);
     if (option === question[2]) setCorrect(value => value + 1);
@@ -53,6 +58,7 @@ export default function QuizPage() {
     set('quiz-result', { correct, total: 8, date: at });
     recordQuiz({ correct, total: 8, answers: round.map((item, i) => ({ question: item[0], selected: selectedAnswers.current[i], correct: item[2] })), at });
     award('quiz');
+    finishActivity('quiz', { outcome: 'completed', correct, total: round.length });
     setPhase('result');
   };
 

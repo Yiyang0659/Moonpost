@@ -1,3 +1,4 @@
+import {trackEvent} from '../lib/analytics';
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {useLocation,useNavigate} from 'react-router-dom';
 import {toast} from '../lib/storage';
@@ -55,7 +56,7 @@ async function makePng(data:PostcardData,logo?:string){
     return canvas.toDataURL('image/png');
   }finally{URL.revokeObjectURL(url);}
 }
-function downloadUrl(url:string,filename:string){const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();}
+function downloadUrl(url:string,filename:string,templateId:TemplateId,source:'generate'|'editor'|'history'){const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();trackEvent('postcard_export_success',{template:templateId,source});}
 
 export default function PostcardPage(){
   const location=useLocation();
@@ -112,16 +113,16 @@ export default function PostcardPage(){
         const next=[item,...history].slice(0,30);if(!writeLocal('postcard-history',next))throw new Error('本机存储失败');
         setHistory(next);setStorageError(false);toast('明信片已生成，并保存在当前浏览器。');
       }catch{setStorageError(true);toast('图片已生成，但未保存到本机。你仍可直接下载。');await Promise.allSettled([removeImage('card-'+id),removeImage('logo-'+id)]);}
-      downloadUrl(png,'月球来信-'+template.name+'.png');
+      downloadUrl(png,'月球来信-'+template.name+'.png',data.templateId,'generate');
     }catch{toast('生成图片失败，请稍后重试。');}finally{setBusy(false);}
   }
-  async function downloadCurrent(){if(!data.message.trim()){toast('先写下一句想说的话。');return;}if(overflow){toast('这段文字超出当前版式，请缩短正文、减少换行或换版式。');return;}if(data.logoKind==='image'&&!logo){toast('自定义图片尚未加载完成，请稍后重试。');return;}setBusy(true);try{downloadUrl(await makePng(data,logo),'月球来信-'+template.name+'.png');toast('PNG 明信片已下载到本机。');}catch{toast('下载失败，请稍后重试。');}finally{setBusy(false);}}
+  async function downloadCurrent(){if(!data.message.trim()){toast('先写下一句想说的话。');return;}if(overflow){toast('这段文字超出当前版式，请缩短正文、减少换行或换版式。');return;}if(data.logoKind==='image'&&!logo){toast('自定义图片尚未加载完成，请稍后重试。');return;}setBusy(true);try{downloadUrl(await makePng(data,logo),'月球来信-'+template.name+'.png',data.templateId,'editor');toast('PNG 明信片已下载到本机。');}catch{toast('下载失败，请稍后重试。');}finally{setBusy(false);}}
   async function copyText(){try{await navigator.clipboard.writeText(data.title+'\n'+data.message+'\n——'+data.sender);toast('文字已复制。');}catch{toast('复制失败，请手动选择正文复制。');}}
   function favoriteWord(){const text=data.message.trim();if(!text){toast('先写一句值得收藏的话。');return;}
     const next=[{id:newId(),createdAt:new Date().toISOString(),text,source:'月球明信片'},...words];
     if(writeLocal('word-favorites',next)){setWords(next);toast('这句话已收藏在本机。');}else{setStorageError(true);toast('未能收藏到本机，请先下载或复制文字。');}}
-  async function downloadSaved(item:SavedPostcard){try{const png=await readImage('card-'+item.id);if(png){downloadUrl(png,'月球来信-'+(templates.find(t=>t.id===item.data.templateId)?.name||'明信片')+'.png');return;}
-      const savedLogo=item.hasImageLogo?await readImage('logo-'+item.id):undefined;downloadUrl(await makePng(item.data,savedLogo),'月球来信-明信片.png');}catch{toast('这张明信片的图片未能读取。');}}
+  async function downloadSaved(item:SavedPostcard){try{const png=await readImage('card-'+item.id);if(png){downloadUrl(png,'月球来信-'+(templates.find(t=>t.id===item.data.templateId)?.name||'明信片')+'.png',item.data.templateId,'history');return;}
+      const savedLogo=item.hasImageLogo?await readImage('logo-'+item.id):undefined;downloadUrl(await makePng(item.data,savedLogo),'月球来信-明信片.png',item.data.templateId,'history');}catch{toast('这张明信片的图片未能读取。');}}
   async function editCopy(item:SavedPostcard){const savedLogo=item.hasImageLogo?await readImage('logo-'+item.id).catch(()=>undefined):undefined;
     setData({...item.data});setLogo(savedLogo);setTab('editor');setMobileView('edit');
     if(savedLogo)writeImage('draft-logo',savedLogo).catch(()=>setStorageError(true));toast('已打开编辑副本，原作品仍保留在收藏中。');}

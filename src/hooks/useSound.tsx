@@ -1,3 +1,4 @@
+import {trackEvent} from '../lib/analytics';
 import {createContext,useContext,useEffect,useRef,useState,type ReactNode} from 'react';
 const SoundContext=createContext({enabled:true,toggle:()=>{},chime:()=>{}});
 export function SoundProvider({children}:{children:ReactNode}){
@@ -46,7 +47,7 @@ export function SoundProvider({children}:{children:ReactNode}){
   };
  },[]);
  const toggle=()=>{
-  const next=!enabledRef.current;enabledRef.current=next;setEnabled(next);
+  const next=!enabledRef.current;enabledRef.current=next;setEnabled(next);trackEvent('sound_toggle',{enabled:next});
   if(next)notes();else{stopNotes();void audio.current?.suspend().catch(()=>{});}
  };
  return <SoundContext.Provider value={{enabled,toggle,chime:notes}}>{children}</SoundContext.Provider>;

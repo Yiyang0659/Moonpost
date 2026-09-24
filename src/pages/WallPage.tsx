@@ -1,3 +1,4 @@
+import {trackEvent} from '../lib/analytics';
 import {useEffect,useMemo,useRef,useState,type FormEvent} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {award,get,set} from '../lib/storage';
@@ -90,6 +91,7 @@ export default function WallPage(){
     if(editing&&!current.some(w=>w.id===editing.id)){setError('这封心愿已在另一页面删除。请取消修改后另写一封。');submitLock.current=false;return}
     const next=editing?current.map(w=>w.id===wish.id?{...wish,favorite:w.favorite}:w):[wish,...current];
     if(!persist(next)){submitLock.current=false;return}
+    trackEvent('wish_save_success',{is_edit:!!editing,style});
     const stamps=get<unknown>('stamps',[]);const alreadyStamped=Array.isArray(stamps)&&stamps.includes('wall');
     recordWish({id:wish.id,name:wish.name,text:wish.text,at:new Date(wish.date).toISOString()});award('wall');
     const savedStamps=get<unknown>('stamps',[]);setNewStamp(!alreadyStamped&&Array.isArray(savedStamps)&&savedStamps.includes('wall'));

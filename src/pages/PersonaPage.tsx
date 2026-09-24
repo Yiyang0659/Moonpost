@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAS, SCENES } from '../data/content';
 import { award, set } from '../lib/storage';
 import { recordPersona } from '../lib/journey';
+import { startActivity, finishActivity } from '../lib/analytics';
 import { JadeRabbit, ChangE } from '../components/scene/Mascots';
 import ActivityHero from './ActivityHero';
 import './shared-activities.css';
@@ -22,8 +23,12 @@ export default function PersonaPage() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [result, setResult] = useState(0);
   const selected = answers[index];
-  const start = () => { setAnswers([]); setIndex(0); setPhase('playing'); };
-  const choose = (choice: number) => setAnswers(previous => { const next = [...previous]; next[index] = choice; return next; });
+  const activityStarted = useRef(false);
+  const start = () => { startActivity('persona'); activityStarted.current = true; setAnswers([]); setIndex(0); setPhase('playing'); };
+  const choose = (choice: number) => {
+    if (!activityStarted.current) { startActivity('persona'); activityStarted.current = true; }
+    setAnswers(previous => { const next = [...previous]; next[index] = choice; return next; });
+  };
   const next = () => {
     if (selected === undefined) return;
     if (index < SCENES.length - 1) { setIndex(value => value + 1); return; }
@@ -37,6 +42,7 @@ export default function PersonaPage() {
     set('persona-result', { id: winner, answers, date: at });
     recordPersona({ id: winner, answers: [...answers], at });
     award('persona');
+    finishActivity('persona', { outcome: 'completed', result_id: winner });
     setPhase('result');
   };
   const persona = PERSONAS[result];
