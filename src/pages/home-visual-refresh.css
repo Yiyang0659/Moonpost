@@ -90,6 +90,51 @@
 .post-home .post-hero-bottom button:hover { color: #ffe2ac; }
 .post-home .post-phases { color: #ffddaa; text-shadow: 0 0 12px #ffe3ac4a; }
 .post-home .post-map { max-width: 1560px; }
+.post-home .post-map::before {
+  inset: 0 auto 0 50%;
+  width: 100vw;
+  background: linear-gradient(180deg, #0b121d4d, #0b121d16 18%, #0b121d24 84%, #0b121d70), url('/images/map/starfield.png') center / cover no-repeat;
+  opacity: 1;
+  filter: none;
+  transform: translateX(-50%);
+  animation: none;
+}
+.post-home .post-map-sparkles {
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 100vw;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.post-home .post-map-sparkles span {
+  position: absolute;
+  border-radius: 50%;
+  color: #e2efff;
+  background: currentColor;
+  box-shadow: 0 0 7px 1px currentColor;
+  opacity: .12;
+  animation-name: post-map-sparkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.post-home .post-map-sparkles span.is-warm { color: #ffe7b9; }
+.post-home .post-map-sparkles span:nth-child(3n) { animation-name: post-map-sparkle-soft; }
+.post-home .post-map > .post-section-heading,
+.post-home .post-map > .post-filterbar,
+.post-home .post-map > .post-station-grid { position: relative; z-index: 1; }
+@keyframes post-map-sparkle {
+  0%, 21%, 64%, 100% { opacity: .08; transform: scale(.55); }
+  36%, 42% { opacity: .94; transform: scale(1.5); }
+}
+@keyframes post-map-sparkle-soft {
+  0%, 30%, 70%, 100% { opacity: .1; transform: scale(.5); }
+  50%, 56% { opacity: .7; transform: scale(1.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-home .post-map-sparkles span { animation: none; opacity: .38; transform: none; }
+}
 .post-home .post-section-heading h2 { font-family: Georgia, 'Songti SC', 'STSong', serif; color: #fff5e7; letter-spacing: .04em; }
 .post-home .post-filterbar { align-items: flex-start; }
 .post-home .post-filters { gap: 11px; }
