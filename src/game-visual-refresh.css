@@ -1,0 +1,87 @@
+/* Shared station controls echo the reference's blue glass and warm lunar edge. */
+.game-layout .game-header {
+  background: linear-gradient(100deg, #101a2bf0, #101a2cef 55%, #17253bf0);
+  border-bottom-color: #9bbce049;
+  box-shadow: inset 0 -1px #e6d3b318;
+}
+.game-layout .back-pill,
+.game-layout .passport-count {
+  min-height: 42px;
+  border: 1px solid #9dbfe18c;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #203854a8, #0d192be8 70%, #223955a8);
+  color: #e3efff;
+  box-shadow: inset 0 0 0 2px #dcecff0c, 0 0 13px #7caeeb1d;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.game-layout .back-pill:hover,
+.game-layout .passport-count:hover { transform: translateY(-2px); border-color: #f3d5a6; box-shadow: 0 0 18px #f5d09846; }
+.game-layout .passport-count { padding: 4px 5px 4px 17px; text-decoration: none; }
+.game-layout .passport-count b {
+  min-width: 48px;
+  border: 1px solid #e1c28c8c;
+  border-radius: 999px;
+  background: radial-gradient(circle at 32% 20%, #d8b88242, #192a40 72%);
+  color: #ffe5bb;
+  text-align: center;
+}
+.game-layout .sound-toggle { border-color: #ddc08e80; color: #ffe0ad; background: radial-gradient(circle at 30% 20%, #324967, #0d1829 75%); }
+.game-layout .station-nav { background: #101b2af2; border-bottom-color: #a6c7e044; box-shadow: 0 8px 25px #04070d2e; }
+.game-layout .station-nav i { border-color: #96b4d66e; background: #15263c; color: #c6d8ee; }
+.game-layout .station-nav a[aria-current=page] { color: #ffe1ae; }
+.game-layout .station-nav a[aria-current=page] i { border-color: #f4d09e; background: radial-gradient(circle at 40% 30%, #b7854940, #132238 70%); color: #ffe5b9; box-shadow: 0 0 12px #efc89059; }
+.game-layout .activity-panel,
+.game-layout .mc-workshop,
+.game-layout .mc-stats,
+.game-layout .parkour-page {
+  border-color: #9fbfdf4f;
+  background-image: radial-gradient(circle at 12% 0%, #8fbaf113, transparent 36%), linear-gradient(140deg, #172338e8, #101925f2);
+  box-shadow: inset 0 0 0 2px #bad8fa08, 0 18px 48px #01040c59;
+}
+.game-layout .activity-primary,
+.game-layout .mc-start,
+.game-layout .wall-submit,
+.game-layout .btn-primary,
+.game-layout .btn.primary {
+  border: 1px solid #ffe4b8;
+  border-radius: 999px;
+  background: linear-gradient(125deg, #fff9eb, #ffe5bd 62%, #eac18c);
+  color: #142138;
+  box-shadow: inset 0 0 0 2px #ffffff4a, 0 0 18px #efca9952;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+}
+.game-layout .activity-primary:hover:not(:disabled),
+.game-layout .mc-start:hover:not(:disabled),
+.game-layout .wall-submit:hover,
+.game-layout .btn-primary:hover,
+.game-layout .btn.primary:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: inset 0 0 0 2px #ffffff66, 0 0 27px #f9d8a884; }
+.game-layout .activity-secondary,
+.game-layout .btn:not(.btn-primary):not(.primary) {
+  border: 1px solid #a5c9eea0;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #1e3451, #0d192a 70%, #253b58);
+  color: #f4f7fe;
+  box-shadow: inset 0 0 0 2px #dbeaff0d, 0 0 14px #86b8fa25;
+}
+.game-layout .activity-secondary:hover,
+.game-layout .btn:not(.btn-primary):not(.primary):hover { border-color: #f3d3a2; color: #ffe2b8; box-shadow: 0 0 18px #eebf8640; }
+.game-layout .activity-options>button,
+.game-layout .wall-record,
+.game-layout .mc-plate {
+  border-color: #9fbee056;
+  background: linear-gradient(120deg, #1c2b43ca, #121e30d9);
+  box-shadow: inset 0 0 0 1px #b9d3ec09;
+}
+.game-layout .activity-options>button:hover:not(:disabled),
+.game-layout .mc-plate:not(:disabled):hover { border-color: #f0d2a2; box-shadow: 0 0 19px #f3d39a28; }
+.game-layout .game-footer { border-top-color: #9bbce047; background: #0d1726a8; }
+.game-layout .game-footer a { color: #e6ceaa; }
+@media (max-width: 700px) {
+  .game-layout .passport-count { min-height: 37px; padding: 2px; }
+  .game-layout .passport-count b { min-width: 43px; }
+  .game-layout .station-nav { gap: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-layout .back-pill,.game-layout .passport-count,.game-layout .activity-primary,.game-layout .mc-start,.game-layout .wall-submit { transition: none; }
+}

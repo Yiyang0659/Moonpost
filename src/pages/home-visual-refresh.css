@@ -1,0 +1,152 @@
+/* The supplied moon-post artwork sets the gold moonlight and blue-glass palette.
+   Controls stay as real text and links so their labels and state remain usable. */
+.post-home .post-brand-icon {
+  flex: 0 0 62px;
+  width: 62px;
+  height: 62px;
+  border: 0;
+  border-radius: 50%;
+  background: url('/images/ui/moon-post-symbols-2026.png') -18px -22px / 260px 195px no-repeat;
+  box-shadow: none;
+  font-size: 0;
+}
+.post-home .post-brand-icon i { display: none; }
+.post-home .post-brand>span:last-child { color: #fff2dc; text-shadow: 0 0 18px #ffe0aa38; }
+.post-home .post-brand small { color: #eacfa6; }
+.post-home .post-nav { background: linear-gradient(90deg, #080d15, #0b1523 75%, #080d15); }
+.post-home .post-nav nav>button { color: #dce7f3; }
+.post-home .post-nav nav>button:hover { color: #ffe5b8; }
+.post-home .post-nav nav>a {
+  border: 1px solid #b9d6ff9c;
+  border-radius: 999px;
+  background: linear-gradient(115deg, #2036518c, #0c1726e8 62%, #2539549c);
+  color: #fff5e4;
+  box-shadow: inset 0 0 0 2px #dceeff0c, 0 0 16px #87b9fa20;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.post-home .post-nav nav>a:hover { transform: translateY(-2px); border-color: #ffe3b7; box-shadow: 0 0 22px #f5cf9e3b; }
+.home-sound .sound-toggle {
+  width: 49px;
+  height: 49px;
+  border-color: #e2c18c9c;
+  background: radial-gradient(circle at 28% 20%, #39506b, #0c1522 75%);
+  color: #ffe1af;
+  box-shadow: inset 0 0 0 2px #e5efff0e, 0 0 16px #e7c18828;
+}
+.home-sound .sound-toggle[aria-pressed=true] { border-color: #f2d5a5; background: #1a2b42; color: #ffe4b8; }
+.post-home .post-hero-actions .post-action {
+  position: relative;
+  min-height: 70px;
+  padding: 16px 29px 16px 80px;
+  border: 1px solid #fff0cf;
+  border-radius: 999px;
+  background: radial-gradient(circle at 24% 15%, #fffef3, #ffe3ac 56%, #eebf7f 100%);
+  box-shadow: inset 0 0 0 3px #fff9e79c, inset 0 -9px 18px #d79b5c4a, 0 0 25px #ffd49a90;
+  color: #172136 !important;
+  text-shadow: 0 1px #fff8e2;
+}
+.post-home .post-hero-actions .post-action::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  background: url('/images/moon/moon-sunlit-2026.png') center / 115% no-repeat;
+  filter: brightness(1.38) sepia(.13) drop-shadow(0 0 5px #fff6d0);
+  transform: translateY(-50%);
+}
+.post-home .post-hero-actions .post-action:hover { box-shadow: inset 0 0 0 3px #fff9e79c, 0 0 33px #ffe0aa; }
+.post-home .post-hero-actions .post-action>span { font-size: 26px; font-weight: 400; }
+.post-home .post-hero-actions .post-text-link {
+  min-height: 69px;
+  border-color: #a7c9f494;
+  background: radial-gradient(circle at 83% 12%, #2c446377, transparent 44%), linear-gradient(120deg, #15243bd9, #091421ef);
+  box-shadow: inset 0 0 0 2px #deebfa0c, 0 0 15px #87b7f326;
+}
+.post-home .post-hero-actions .post-text-link:hover { border-color: #d3e6ff; box-shadow: inset 0 0 0 2px #deebfa14, 0 0 24px #9dc8ff5b; }
+.post-home .post-hero-actions .post-text-link>.post-envelope {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 2px 0 0;
+  border: 1px solid #e8cb9c70;
+  border-radius: 50%;
+  color: #ffe1ad;
+  font-size: 21px;
+}
+.post-home .post-hero-actions .post-text-link>.post-secondary-arrow { margin-left: 7px; color: #ffe1ae; font-size: 23px; line-height: 1; }
+.post-home .post-hero-rabbit {
+  width: clamp(165px, 14.7vw, 245px);
+  right: 5.7%;
+  bottom: 13%;
+  filter: drop-shadow(8px 14px 11px #02060ca6) drop-shadow(0 0 15px #f8d8b42e);
+}
+.post-hero .lunar-moon-fallback { background: url('/images/moon/moon-sunlit-2026.png') center / contain no-repeat; border: 0; }
+.post-hero .lunar-moon-fallback .lunar-fallback-text { display: none; }
+.post-home .post-hero-bottom button { color: #fff5df; }
+.post-home .post-hero-bottom button:hover { color: #ffe2ac; }
+.post-home .post-phases { color: #ffddaa; text-shadow: 0 0 12px #ffe3ac4a; }
+.post-home .post-map { max-width: 1560px; }
+.post-home .post-section-heading h2 { font-family: Georgia, 'Songti SC', 'STSong', serif; color: #fff5e7; letter-spacing: .04em; }
+.post-home .post-filterbar { align-items: flex-start; }
+.post-home .post-filters { gap: 11px; }
+.post-home .post-filters>button {
+  min-height: 44px;
+  padding: 11px 21px;
+  border: 1px solid #91afd48f;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #1c304aa6, #0e1b2de8 66%, #233957a8);
+  box-shadow: inset 0 0 0 2px #c3dcff0b, 0 4px 20px #01040a3d;
+  color: #e9f1ff;
+  font-size: 13px;
+  transition: transform .25s, border-color .25s, box-shadow .25s, color .25s;
+}
+.post-home .post-filters>button.is-active {
+  border-color: #ffe0a9;
+  background: radial-gradient(circle at 18% 15%, #69533b7d, transparent 65%), linear-gradient(125deg, #262d3c, #0d1829);
+  box-shadow: inset 0 0 0 2px #ffe9c720, 0 0 17px #edbc8350;
+  color: #ffe1a7;
+}
+.post-home .post-filters>button:hover { transform: translateY(-2px); border-color: #ffdfad; box-shadow: 0 0 19px #efc48c3d; color: #ffe5bd; }
+.post-home .post-filterbar>span { padding-top: 13px; color: #b5c6dd; }
+.post-home .post-station-image { border-radius: 29px; }
+.post-home .post-station-image img { filter: drop-shadow(0 16px 28px #0207115c); }
+.post-home .post-station-image:hover { filter: brightness(1.1) drop-shadow(0 0 14px #8ebdff5e); }
+.post-home .post-station-achieved { border-color: #f4d4a2; background: #101c2ce8; color: #ffe0ac; box-shadow: 0 0 17px #dfba804a; }
+.post-home .post-footer>button {
+  padding: 12px 19px;
+  border: 1px solid #9db8d27c;
+  border-radius: 999px;
+  background: linear-gradient(115deg, #213a57ac, #0e1929);
+  color: #e8f0f8;
+}
+.post-home .post-footer>button:hover { border-color: #ffe0aa; color: #ffe0aa; }
+@media (max-width: 1100px) {
+  .post-home .post-hero-rabbit { right: 1.5%; width: 23vw; bottom: 15%; }
+}
+@media (max-width: 700px) {
+  .post-home .post-brand-icon { flex-basis: 44px; width: 44px; height: 44px; background-size: 185px 139px; background-position: -13px -16px; }
+  .home-sound .sound-toggle { width: 39px; height: 39px; }
+  .post-home .post-hero-actions { gap: 9px; }
+  .post-home .post-hero-actions .post-action { min-height: 51px; padding: 9px 12px 9px 48px; font-size: 12px; gap: 7px; }
+  .post-home .post-hero-actions .post-action::before { left: 6px; width: 35px; height: 35px; }
+  .post-home .post-hero-actions .post-action>span { font-size: 19px; }
+  .post-home .post-hero-actions .post-text-link { min-height: 51px; padding: 9px 10px; font-size: 11px; gap: 5px; }
+  .post-home .post-hero-actions .post-text-link>.post-envelope { width: 25px; height: 25px; font-size: 14px; }
+  .post-home .post-hero-actions .post-text-link>.post-secondary-arrow { margin: 0; font-size: 16px; }
+  .post-home .post-hero-rabbit { width: clamp(112px, 33vw, 170px); right: -1%; bottom: 29%; }
+  .post-home .post-filters>button { min-height: 40px; padding: 9px 14px; font-size: 11px; }
+  .post-home .post-filterbar>span { padding-top: 0; }
+  .post-home .post-footer .post-brand-icon { flex-basis: 38px; width: 38px; height: 38px; background-size: 160px 120px; background-position: -11px -14px; }
+}
+@media (max-width: 370px) {
+  .post-home .post-hero-actions { flex-wrap: wrap; }
+  .post-home .post-hero-actions .post-action { padding-right: 9px; font-size: 10px; }
+  .post-home .post-hero-actions .post-text-link { padding-inline: 8px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-home .post-filters>button,.post-home .post-nav nav>a { transition: none; }
+}

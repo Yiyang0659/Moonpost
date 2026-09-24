@@ -19,6 +19,7 @@ function StampIcon({ kind }: { kind: typeof passportStops[number]['icon'] }) {
 }
 
 export default function PassportSection({ stamps }: { stamps: string[] }) {
+  const completedCount = passportStops.filter(stop => stamps.includes(stop.id)).length;
   const next = passportStops.find(stop => !stamps.includes(stop.id));
   const destination = next ? `/${next.id}` : '/certificate';
   const destinationName = next?.name ?? '月球漫游纪念证';
@@ -31,28 +32,37 @@ export default function PassportSection({ stamps }: { stamps: string[] }) {
         <Link className="post-action post-passport-main-action" to={destination}>{next ? `下一站：${destinationName}` : '领取月球漫游纪念证'}<span aria-hidden="true">⟶</span></Link>
         <div className="post-passport-copy-note" aria-hidden="true"><i/>SOME JOURNEYS<br/>STAY WITH YOU FOREVER.</div>
       </div>
-      <div className="post-passport-card">
-        <div className="post-passport-head">
-          <div className="post-passport-title"><strong>月球漫游护照</strong><small>LUNAR TRAVEL PASSPORT</small></div>
-          <div className="post-passport-progress" aria-label={`已收集 ${stamps.length} 枚，共 5 枚邮戳`}><span className="post-passport-progress-moon" aria-hidden="true"/><b>{stamps.length}<i>/ 5</i></b><small>JOURNEY PROGRESS</small></div>
-          <span className="post-passport-motto">FIVE STAMPS<br/>A BRIGHTER YOU.</span>
+      <div className="post-passport-visual">
+        <div className="post-passport-card">
+          <div className="post-passport-head">
+            <div className="post-passport-title"><strong>月球漫游护照</strong><small>MOON PASSPORT</small></div>
+            <div className="post-passport-progress" aria-label={`已收集 ${completedCount} 枚，共 5 枚邮戳`}><b>{completedCount}<i>/ 5</i></b><small>JOURNEY PROGRESS</small></div>
+          </div>
+          <p className="post-passport-card-intro">集齐全部 5 个站点印章，解锁专属月球漫游纪念证。</p>
+          <div className="post-stamps" aria-label="五枚月球邮戳，可左右滑动查看">
+            {passportStops.map(stop => {
+              const done = stamps.includes(stop.id);
+              return <Link key={stop.id} to={`/${stop.id}`} className={`post-passport-stamp${done ? ' is-done' : ''}`} aria-label={`${stop.name}，${done ? '已盖章' : '待抵达'}`}>
+                <span className="post-passport-stamp-number">{stop.number}</span>
+                <span className="post-passport-stamp-icon"><StampIcon kind={stop.icon}/></span>
+                <strong>{stop.short}</strong>
+                <small>{done ? '✓ 已盖章' : '待抵达'}</small>
+              </Link>;
+            })}
+          </div>
+          <p className="post-passport-scroll-hint">左右滑动查看全部邮戳 →</p>
+          <p className="post-passport-card-footer"><span>探索无垠宇宙，收集属于你的月球记忆</span><small>MOON ALWAYS LISTENS</small></p>
         </div>
-        <div className="post-stamps" aria-label="五枚月球邮戳，可左右滑动查看">
-          {passportStops.map(stop => {
-            const done = stamps.includes(stop.id);
-            return <Link key={stop.id} to={`/${stop.id}`} className={`post-passport-stamp${done ? ' is-done' : ''}`} aria-label={`${stop.name}，${done ? '已盖章' : '待抵达'}`}>
-              <span className="post-passport-stamp-number">{stop.number}</span>
-              <StampIcon kind={stop.icon}/>
-              <strong>{stop.short}</strong><i aria-hidden="true"/>
-              <small>{done ? '✓ 已盖章' : '待抵达'}</small>
-            </Link>;
-          })}
+        <div className="post-passport-details">
+          <div className="post-passport-progress-panel" aria-label={`漫游进度：已收集 ${completedCount} 枚邮戳`}><div><strong>漫游进度</strong><small>已收集站点印章</small></div><b>{completedCount}<span>/ 5</span></b><small>JOURNEY PROGRESS</small></div>
+          <Link to={destination} className="post-passport-next" aria-label={`${next ? '前往下一站' : '领取纪念证'}：${destinationName}`}>
+            <span className="post-passport-next-image" aria-hidden="true"/>
+            <span className="post-passport-next-copy"><small>{next ? '下一站推荐  »' : '旅程纪念  »'}</small><strong>{destinationName}</strong><span>{next ? '前往领取你的下一枚印章。' : '五枚印章齐全，带走专属纪念。'}</span></span>
+            <b aria-hidden="true">→</b>
+          </Link>
         </div>
-        <p className="post-passport-scroll-hint">左右滑动查看全部邮戳 →</p>
-        <div className="post-passport-next">
-          <div className="post-passport-next-image" aria-hidden="true"/>
-          <div className="post-passport-next-copy"><small>{next?'下一站推荐':'旅程终点'}</small><strong>{destinationName}</strong><span>{next ? '前往领取你的下一枚印章。' : '五枚印章齐全，带走专属纪念。'}</span></div>
-          <Link to={destination} className="post-passport-next-link" aria-label={`${next ? '继续旅程，前往' : '制作'}${destinationName}`}><span>继续旅程<small>前往下一站</small></span><b aria-hidden="true">→</b></Link>
+        <div className="post-passport-route" aria-label="五站漫游路线">
+          {passportStops.map(stop => <Link key={stop.id} to={`/${stop.id}`} className={stamps.includes(stop.id) ? 'is-done' : ''} aria-label={`${stop.name}，${stamps.includes(stop.id) ? '已盖章' : '待抵达'}`}><i/><span>{stop.number} {stop.short}</span></Link>)}
         </div>
       </div>
     </div>
