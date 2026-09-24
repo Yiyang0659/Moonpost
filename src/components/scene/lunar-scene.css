@@ -56,5 +56,7 @@
 }
 @media(prefers-reduced-motion:reduce){.post-hero .lunar-scene-orbit{animation:none!important}}
 
-/* The near-side orbital path and its moving lights sit in front of the globe. */
-.post-hero .lunar-scene-orbit{z-index:3}
+/* The globe hides the far arc while the near arc and its lights pass in front. */
+.post-hero .lunar-scene-orbit{z-index:0}
+.post-hero .lunar-floating-scene .lunar-moon-wrap{z-index:1}
+.post-hero .lunar-scene-orbit-front{z-index:3;clip-path:inset(50% -2% -3% -2%)}
