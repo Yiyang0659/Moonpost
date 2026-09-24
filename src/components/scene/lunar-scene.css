@@ -55,3 +55,6 @@
   50%{transform:translateY(-13px) rotate(-19deg)}
 }
 @media(prefers-reduced-motion:reduce){.post-hero .lunar-scene-orbit{animation:none!important}}
+
+/* The near-side orbital path and its moving lights sit in front of the globe. */
+.post-hero .lunar-scene-orbit{z-index:3}

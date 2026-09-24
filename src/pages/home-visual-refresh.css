@@ -150,3 +150,57 @@
 @media (prefers-reduced-motion: reduce) {
   .post-home .post-filters>button,.post-home .post-nav nav>a { transition: none; }
 }
+
+/* The artwork extends beyond each card's box. Keep that overflow below the filters. */
+.post-home .post-filterbar { position: relative; z-index: 5; }
+.post-home .post-station-grid { position: relative; z-index: 1; padding-top: 14px; overflow-anchor: none; }
+.post-home .post-station-grid .post-station-image { animation: none; }
+.post-home .post-station-grid.is-filtering .post-station-image {
+  pointer-events: none;
+  animation: post-filter-reveal .52s cubic-bezier(.18, .7, .2, 1) both;
+}
+.post-home .post-station-grid.is-filtering .post-station-image:nth-child(2) { animation-delay: 60ms; }
+.post-home .post-station-grid.is-filtering .post-station-image:nth-child(3) { animation-delay: 120ms; }
+.post-home .post-station-grid.is-filtering .post-station-image:nth-child(4) { animation-delay: 180ms; }
+.post-home .post-station-grid.is-filtering .post-station-image:nth-child(5) { animation-delay: 240ms; }
+.post-home .post-station-grid.is-filtering .post-station-image:nth-child(6) { animation-delay: 240ms; }
+@keyframes post-filter-reveal {
+  from { opacity: 0; transform: translateY(25px) scale(.965); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* One to three meteors appear in each randomized wave, away from controls. */
+.post-home .post-hero-landscape::after { content: none; }
+.post-hero-meteors { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.post-hero-meteor {
+  position: absolute;
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fffefa, #d6e8ff 8%, #8eb8ec77 37%, transparent 100%);
+  box-shadow: 0 0 9px #d9ecffb3;
+  transform-origin: left center;
+  opacity: 0;
+  animation: post-hero-shoot var(--meteor-duration) ease-out var(--meteor-delay) both;
+}
+.post-hero-meteor::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fffefa;
+  box-shadow: 0 0 10px 4px #fff8e0a1, 0 0 20px #bedaff;
+}
+@keyframes post-hero-shoot {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(var(--meteor-angle)) scaleX(.45); }
+  9% { opacity: 1; }
+  72% { opacity: .95; }
+  100% { opacity: 0; transform: translate3d(var(--meteor-x), var(--meteor-y), 0) rotate(var(--meteor-angle)) scaleX(1.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-home .post-station-grid.is-filtering .post-station-image { animation: none; }
+  .post-hero-meteors { display: none; }
+}
