@@ -61,9 +61,9 @@ export function mountParkour(root,ctx){
   const g = canvas.getContext('2d');
   const image = src => { const img = new Image(); img.src = src; return img; };
   const scene = image('/images/station-scenes/parkour.webp');
-  const runAtlas = image('/images/station-scenes/astronaut-rabbit-atlas.png');
-  const collectiblesAtlas = image('/images/station-scenes/courier-collectibles-atlas.png');
-  const obstaclesAtlas = image('/images/station-scenes/courier-obstacles-atlas.png');
+  const runAtlas = image('/images/station-scenes/astronaut-rabbit-atlas.webp');
+  const collectiblesAtlas = image('/images/station-scenes/courier-collectibles-atlas.webp');
+  const obstaclesAtlas = image('/images/station-scenes/courier-obstacles-atlas.webp');
   let rabbit3d, disposed = false;
   import('./rabbit3d').then(({createRabbit3D}) => {
     if(disposed) return;

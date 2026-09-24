@@ -15,6 +15,6 @@ export default function ActivityHero({ number, english, title, intro, verse, kin
       <p className="activity-hero-intro">{intro}</p>
     </div>
     <p className="activity-hero-verse">{verse}<span aria-hidden="true"> ✦</span></p>
-    <div className="activity-hero-art" aria-hidden="true"><div className="activity-hero-window" /><img src="/images/moon/seated-rabbit.png" alt="" /></div>
+    <div className="activity-hero-art" aria-hidden="true"><div className="activity-hero-window" /><img src="/images/moon/seated-rabbit.webp" alt="" /></div>
   </header>;
 }

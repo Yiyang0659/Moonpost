@@ -6,7 +6,7 @@
   height: 62px;
   border: 0;
   border-radius: 50%;
-  background: url('/images/ui/moon-post-symbols-2026.png') -18px -22px / 260px 195px no-repeat;
+  background: url('/images/ui/moon-post-symbols-2026.webp') -18px -22px / 260px 195px no-repeat;
   box-shadow: none;
   font-size: 0;
 }
@@ -53,7 +53,7 @@
   width: 53px;
   height: 53px;
   border-radius: 50%;
-  background: url('/images/moon/moon-sunlit-2026.png') center / 115% no-repeat;
+  background: url('/images/moon/moon-sunlit-2026.webp') center / 115% no-repeat;
   filter: brightness(1.38) sepia(.13) drop-shadow(0 0 5px #fff6d0);
   transform: translateY(-50%);
 }
@@ -84,7 +84,7 @@
   bottom: 13%;
   filter: drop-shadow(8px 14px 11px #02060ca6) drop-shadow(0 0 15px #f8d8b42e);
 }
-.post-hero .lunar-moon-fallback { background: url('/images/moon/moon-sunlit-2026.png') center / contain no-repeat; border: 0; }
+.post-hero .lunar-moon-fallback { background: url('/images/moon/moon-sunlit-2026.webp') center / contain no-repeat; border: 0; }
 .post-hero .lunar-moon-fallback .lunar-fallback-text { display: none; }
 .post-home .post-hero-bottom button { color: #fff5df; }
 .post-home .post-hero-bottom button:hover { color: #ffe2ac; }
@@ -93,7 +93,7 @@
 .post-home .post-map::before {
   inset: 0 auto 0 50%;
   width: 100vw;
-  background: linear-gradient(180deg, #0b121d4d, #0b121d16 18%, #0b121d24 84%, #0b121d70), url('/images/map/starfield.png') center / cover no-repeat;
+  background: linear-gradient(180deg, #0b121d4d, #0b121d16 18%, #0b121d24 84%, #0b121d70), url('/images/map/starfield.webp') center / cover no-repeat;
   opacity: 1;
   filter: none;
   transform: translateX(-50%);

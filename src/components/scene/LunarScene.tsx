@@ -9,12 +9,13 @@ export default function LunarScene(){
  useEffect(()=>{
   const host=root.current,c=canvas.current;if(!host||!c)return;
   const renderer=createMoonRenderer(c,()=>setFallback(true));if(!renderer)setFallback(true);
-  const media=matchMedia('(prefers-reduced-motion: reduce)');let visible=true,raf=0,last=0,lost=false;
+  const media=matchMedia('(prefers-reduced-motion: reduce)');const frameInterval=matchMedia('(pointer: coarse)').matches?1000/30:1000/60;let visible=true,raf=0,last=0,lost=false;
   const draw=()=>{if(!lost)renderer?.draw(rotation.current,tilt.current,1.13)};paint.current=draw;
   const resize=()=>{renderer?.resize(c.clientWidth,c.clientHeight);draw()};
   const sizeObserver=new ResizeObserver(resize);sizeObserver.observe(c);resize();
   const tick=(now:number)=>{
    raf=0;if(!visible||document.hidden||media.matches||lost)return;
+   if(last && now-last<frameInterval){raf=requestAnimationFrame(tick);return;}
    const delta=last?Math.min(now-last,50):0;last=now;
    if(!pointer.current&&now-lastInteraction.current>3500){rotation.current+=delta*.000024;draw()}
    raf=requestAnimationFrame(tick);

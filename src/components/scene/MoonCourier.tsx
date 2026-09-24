@@ -53,7 +53,7 @@ export default function MoonCourier({onDelivered}:{onDelivered:()=>void}){
  return <div ref={host} className="courier-system" data-phase="travelling">
   <svg className="courier-track courier-track-back" viewBox="0 0 660 600" preserveAspectRatio="none" aria-hidden="true"><path d={orbitPath(Math.PI,Math.PI*2)}/></svg>
   <svg className="courier-track courier-track-front" viewBox="0 0 660 600" preserveAspectRatio="none" aria-hidden="true"><path d={orbitPath(0,Math.PI)}/>{[START,END].map(a=>{const p=orbitPoint(a);return <g key={a}><circle cx={p.x} cy={p.y} r="7" fill="#d6dbd9" fillOpacity=".12"/><circle cx={p.x} cy={p.y} r="3" fill="#dfddcf"/></g>})}</svg>
-  <button ref={rabbit} className="courier-rabbit" onClick={()=>trigger.current()} aria-label="让玉兔加速送信" aria-describedby="lunar-drag-hint"><img className="courier-seated-rabbit" src="/images/moon/seated-rabbit.png" alt="" draggable={false}/></button>
+  <button ref={rabbit} className="courier-rabbit" onClick={()=>trigger.current()} aria-label="让玉兔加速送信" aria-describedby="lunar-drag-hint"><img className="courier-seated-rabbit" src="/images/moon/seated-rabbit.webp" alt="" draggable={false}/></button>
   <svg className="courier-delivery" viewBox="0 0 660 600" preserveAspectRatio="none" aria-hidden="true"><g ref={letter}><path d="M-17-11H17V11H-17ZM-17-11 0 2 17-11M-17 11-5 1M17 11 5 1" fill="#dcc69a" stroke="#f5e9ca" strokeWidth="1.3"/><circle cy="2" r="2" fill="#a58a55"/></g><g ref={glow}><circle r="16" fill="#efdfb0" fillOpacity=".14"/><circle r="11" fill="none" stroke="#f5deb0" strokeWidth="1"/><path d="M-22 0h7m30 0h7M0-22v7m0 30v7" stroke="#f5deb0" strokeWidth="1.4"/></g></svg>
  </div>
 }

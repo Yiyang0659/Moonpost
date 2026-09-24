@@ -131,15 +131,15 @@
 @media(max-width:650px){.wish-studio{margin:22px 12px 0}.wish-intro-line{padding:0 5px 4px}.wish-intro-line>p>span{font-size:18px}.wish-intro-line>p{font-size:11px}.wish-intro-line>div{font-size:10px;gap:12px}.wish-compose{padding:21px 19px}.wish-section-title h3{font-size:22px}.wish-section-number{font-size:34px}.wish-panel{border-radius:13px}.wish-tabs{padding:0 19px;gap:23px}.wish-tabs>button{font-size:13px;padding:16px 0;min-height:55px}.wish-preview-panel,.wish-album-panel{padding:20px 16px}.wish-preview-heading{display:block}.wish-preview-heading p{margin-top:6px}.wish-style-options{gap:10px}.wish-mini-paper{height:59px;padding:8px}.wish-mini-paper i{font-size:12px;right:8px}.wish-style-options>button>strong{font-size:10px;padding-top:12px}.wish-preview-stage{padding-top:24px}.wish-preview-caption{font-size:13px}.wish-success-note{flex-wrap:wrap;padding:12px}.wish-success-note>div{flex-basis:75%}.wish-success-note>button{margin-left:28px}.wish-summary-grid{grid-template-columns:1fr}.wish-summary{padding:13px 17px}.wish-summary>p{min-height:0;font-size:17px}.wish-summary-byline{font-size:11px}.wish-summary-byline small{font-size:10px}.wish-album-toolbar h3{font-size:18px}.wish-detail-actions{gap:8px}.wish-detail-actions .wish-postcard-link{width:100%}.wish-sealing-status{flex-wrap:wrap;gap:3px}.wish-inspiration>div:first-child{font-size:11px}.wish-primary{min-height:56px}.wish-privacy{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.wish-studio *,.wish-studio *:before,.wish-studio *:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.wish-summary:hover,.wish-primary:hover:not(:disabled),.wish-style-options>button:hover .wish-mini-paper{transform:none}}
 /* Match the selectors and collection to the four physical stationery designs. */
-.wish-mini-moon{background:#f2eada url('/images/wishes/lunar-paper.png') center/cover;color:#46596a;border-color:#dfc69b}
+.wish-mini-moon{background:#f2eada url('/images/wishes/lunar-paper.webp') center/cover;color:#46596a;border-color:#dfc69b}
 .wish-mini-moon i{color:#ae8d54}
-.wish-mini-note{background:#f5e8c8 url('/images/wishes/osmanthus-paper.png') left 72%/cover;color:#79674d}
+.wish-mini-note{background:#f5e8c8 url('/images/wishes/osmanthus-paper.webp') left 72%/cover;color:#79674d}
 .wish-mini-fold{background:linear-gradient(#13294040,#10203070),url('/images/keepsakes/osmanthus-moon.webp') center 58%/cover;color:#e2c291;border-color:#a490704f}
 .wish-mini-fold i{color:#e0c292}.wish-mini-fold:after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:#b5c3cd5e}
-.wish-mini-ticket{background:#e6d5b3 url('/images/wishes/lunar-paper.png') center/cover;color:#75664d}
+.wish-mini-ticket{background:#e6d5b3 url('/images/wishes/lunar-paper.webp') center/cover;color:#75664d}
 .wish-summary-moon{background:linear-gradient(#172b43f0,#142136ed),url('/images/station-scenes/wall.webp') center/cover;border-color:#b99a616e;--summary-accent:#d9bd8b}
-.wish-summary-note{background:linear-gradient(100deg,#f1e4c8ef,#f1e4c8ba),url('/images/wishes/osmanthus-paper.png') left bottom/cover;--summary-accent:#8a6b37;border-color:#d9c094}
-.wish-summary-ticket{background:linear-gradient(100deg,#ebd9b5eb,#ebd9b5b8),url('/images/wishes/lunar-paper.png') right bottom/cover;--summary-accent:#745c38;border-color:#d3b67f}
+.wish-summary-note{background:linear-gradient(100deg,#f1e4c8ef,#f1e4c8ba),url('/images/wishes/osmanthus-paper.webp') left bottom/cover;--summary-accent:#8a6b37;border-color:#d9c094}
+.wish-summary-ticket{background:linear-gradient(100deg,#ebd9b5eb,#ebd9b5b8),url('/images/wishes/lunar-paper.webp') right bottom/cover;--summary-accent:#745c38;border-color:#d3b67f}
 .wish-summary-fold{background:linear-gradient(#162d40ef,#12253bec),url('/images/keepsakes/osmanthus-moon.webp') center 55%/cover;--summary-accent:#d8bf93;border-color:#ad997876}
 .wish-summary-note>p,.wish-summary-ticket>p{color:#3c4650}.wish-summary-note .wish-summary-to,.wish-summary-ticket .wish-summary-to{color:#716853}
 .wish-summary-note .wish-summary-byline,.wish-summary-ticket .wish-summary-byline{color:#645b49;border-color:#8c77563b}

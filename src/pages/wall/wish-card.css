@@ -20,7 +20,7 @@
 .wish-paper-footer b{font-size:16px;font-weight:400;letter-spacing:.09em;min-width:0;min-width:40%;padding:0 7px 4px;border-bottom:1px solid #7b817378}
 .wish-paper-footer time{font:9px/1.8 Georgia,serif;letter-spacing:.1em;text-align:right;color:#4e5960}
 .wish-moon-stage{perspective:1300px}
-.wish-moon-paper{padding:32px 36px 27px;min-height:365px;background-image:linear-gradient(90deg,#f4ecd752,#f4ecd729),url('/images/wishes/lunar-paper.png');background-position:center;background-size:cover;display:flex;flex-direction:column;animation:wish-unseal-paper .5s ease both}
+.wish-moon-paper{padding:32px 36px 27px;min-height:365px;background-image:linear-gradient(90deg,#f4ecd752,#f4ecd729),url('/images/wishes/lunar-paper.webp');background-position:center;background-size:cover;display:flex;flex-direction:column;animation:wish-unseal-paper .5s ease both}
 .wish-ink-postmark{width:154px;color:#c2a570;pointer-events:none}
 .wish-sealed-envelope{position:relative;display:block;isolation:isolate;width:100%;min-height:345px;aspect-ratio:1.9;padding:0;overflow:hidden;border:1px solid #b49a70!important;border-radius:10px;background:linear-gradient(120deg,#24374f,#102239 65%,#1f3349)!important;box-shadow:0 18px 28px #02091270,inset 0 0 0 5px #c2a7780c;cursor:pointer;color:#eccda0;text-align:left;animation:wish-envelope-appear .5s ease both}
 .wish-sealed-envelope:before{content:'';position:absolute;inset:6px;border:1px solid #d6b88830;border-radius:5px;pointer-events:none;z-index:6}
@@ -41,7 +41,7 @@
 .wish-sealed-envelope>.wish-ink-postmark{position:absolute;right:3%;bottom:21%;width:21%;z-index:4;transform:rotate(-10deg)}
 .wish-envelope-poem{position:absolute;left:6%;bottom:10%;font:13px/1.9 'Songti SC',serif;letter-spacing:.15em;z-index:4;text-shadow:0 2px 3px #08182a}
 .wish-envelope-open-hint{position:absolute;right:6%;bottom:8%;font-size:10px;letter-spacing:.1em;color:#f0dab6;z-index:4;text-shadow:0 2px 3px #08182a}
-.wish-moon-reply{padding:30px 35px 25px;min-height:345px;background:linear-gradient(#f4ecddd9,#f4ecddd9),url('/images/wishes/lunar-paper.png') center/cover;animation:wish-unseal-paper .5s ease both}
+.wish-moon-reply{padding:30px 35px 25px;min-height:345px;background:linear-gradient(#f4ecddd9,#f4ecddd9),url('/images/wishes/lunar-paper.webp') center/cover;animation:wish-unseal-paper .5s ease both}
 .wish-moon-reply .wish-paper-heading{padding-bottom:18px;border-bottom:1px solid var(--paper-rule)}
 .wish-moon-reply .wish-paper-heading h4{font-size:16px;letter-spacing:.14em}
 .wish-reply-moon{font:35px/1 Georgia,serif;color:#c1a064}
@@ -66,8 +66,8 @@
 .wish-note-rotator{display:grid;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .is-note-turned .wish-note-rotator{transform:rotateY(-180deg)}
 .wish-note-front,.wish-note-back{grid-area:1/1;min-width:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:520px;padding:28px 30px 24px;border-color:#dec69d;border-radius:7px;display:flex;flex-direction:column}
-.wish-note-front{background-image:linear-gradient(#edce8a21,#edce8a16),url('/images/wishes/osmanthus-paper.png');background-position:left bottom;background-size:100% 100%;}
-.wish-note-back{transform:rotateY(180deg);background-image:linear-gradient(#efe1bb45,#efe1bb12),url('/images/wishes/lunar-paper.png');background-position:62% bottom;background-size:auto 100%}
+.wish-note-front{background-image:linear-gradient(#edce8a21,#edce8a16),url('/images/wishes/osmanthus-paper.webp');background-position:left bottom;background-size:100% 100%;}
+.wish-note-back{transform:rotateY(180deg);background-image:linear-gradient(#efe1bb45,#efe1bb12),url('/images/wishes/lunar-paper.webp');background-position:62% bottom;background-size:auto 100%}
 .wish-note-front:before,.wish-note-back:before{border:0}
 .wish-note-heading{display:flex;justify-content:space-between;gap:18px;align-items:center;color:#91754e}
 .wish-note-heading small{font:9px/1.7 Georgia,serif;letter-spacing:.35em}
@@ -87,7 +87,7 @@
 .wish-note-front .wish-note-heading>span{margin-right:28px}
 .wish-note-back .wish-note-message{margin:66px 5px 24px;min-height:155px;font:21px/2.1 'Songti SC',serif;text-align:left;letter-spacing:.06em}
 .wish-note-reply-sign{align-self:flex-end;font-size:15px;color:#6d624e;margin-bottom:82px}
-.wish-ticket-object{display:grid;grid-template-columns:minmax(0,1fr) 29%;min-height:265px;border:0;border-radius:12px;background:linear-gradient(#e6cf9d52,#e6cf9d52),url('/images/wishes/lunar-paper.png') center/100% 100%,#ecddbc;box-shadow:none;mask-image:radial-gradient(circle at 0 50%,transparent 15px,#000 16px),radial-gradient(circle at 100% 50%,transparent 15px,#000 16px);mask-composite:intersect}
+.wish-ticket-object{display:grid;grid-template-columns:minmax(0,1fr) 29%;min-height:265px;border:0;border-radius:12px;background:linear-gradient(#e6cf9d52,#e6cf9d52),url('/images/wishes/lunar-paper.webp') center/100% 100%,#ecddbc;box-shadow:none;mask-image:radial-gradient(circle at 0 50%,transparent 15px,#000 16px),radial-gradient(circle at 100% 50%,transparent 15px,#000 16px);mask-composite:intersect}
 .wish-ticket-object:before{inset:5px;border-color:#ad8a5f66;border-radius:10px}
 .wish-ticket-main{padding:24px 24px 18px 29px;display:flex;flex-direction:column;min-width:0;background:linear-gradient(90deg,#eee0c250,#f1e6d123)}
 .wish-ticket-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #a48a605c;padding-bottom:10px}
