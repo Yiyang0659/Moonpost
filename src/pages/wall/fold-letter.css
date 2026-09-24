@@ -1,0 +1,60 @@
+.wish-fold-root{container-type:inline-size;min-width:0;width:100%;color:#ecd2a4;font-family:"Songti SC","STSong","Noto Serif SC",serif;text-align:center}
+.wish-fold-scene{padding:24px 4px 30px;perspective:1500px;overflow:clip;isolation:isolate}
+.wish-fold-book{position:relative;width:50%;max-width:360px;margin:auto;transform-style:preserve-3d;box-shadow:0 15px 28px #0005}
+.wish-fold-paper{position:relative;display:flex;flex-direction:column;align-items:center;min-height:440px;box-sizing:border-box;padding:28px 24px 115px;background:linear-gradient(#f4eedeee,#f4eedec9 64%,#f4eede08),url('/images/wishes/lunar-paper.png') center bottom/cover,#efe8d8;border:1px solid #c8b994;color:#243c51;box-shadow:inset 0 0 18px #7c745528;overflow-wrap:anywhere}
+.wish-fold-ornament{display:flex;width:100%;justify-content:space-between;align-items:center;color:#b59760;margin-bottom:20px;font-size:19px}
+.wish-fold-ornament i{display:block;width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#f7e6b6,#b99763);box-shadow:0 0 0 6px #bb9a5720}
+.wish-fold-eyebrow{font:9px/1.6 Georgia,serif;letter-spacing:.2em;color:#7e7565}
+.wish-fold-address{font:400 17px/1.7 "Songti SC","STSong",serif;letter-spacing:.12em;margin:18px 0 12px;color:#243c51}
+.wish-fold-message{font-size:clamp(18px,3.4cqi,23px);line-height:1.95;letter-spacing:.06em;margin:6px 0 20px;white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere;width:100%}
+.wish-fold-divider{display:flex;align-items:center;gap:12px;width:80%;color:#a28a5d;font-size:15px}
+.wish-fold-divider:before,.wish-fold-divider:after{content:"";height:1px;background:#b4a28266;flex:1}
+.wish-fold-blessing{font-size:15px;line-height:1.9;margin:18px 0;color:#425363}
+.wish-fold-signature{font-size:14px;line-height:1.8;overflow-wrap:anywhere;width:100%}
+.wish-fold-date{font:10px/1.8 "Songti SC",serif;margin-top:8px;color:#65685f}
+.wish-fold-bottomline{position:absolute;bottom:22px;left:10px;right:10px;letter-spacing:.15em;font-size:11px;color:#435668}
+.wish-fold-wing{position:absolute;top:0;bottom:0;width:50%;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.22,.65,.2,1);z-index:3}
+.wish-fold-wing-left{left:0;transform-origin:left center;transform:rotateY(0deg)}
+.wish-fold-wing-right{right:0;transform-origin:right center;transform:rotateY(0deg)}
+.wish-fold-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-sizing:border-box;overflow:hidden}
+.wish-fold-cover-face{background-color:#142b41;background-image:linear-gradient(#13294010,#0b1d3140),url('/images/keepsakes/osmanthus-moon.webp');background-size:200% 100%;border-block:1px solid #8595a477;box-shadow:inset 0 0 25px #0003}
+.wish-fold-cover-left{background-position:left center;border-left:1px solid #8595a477}
+.wish-fold-cover-right{background-position:right center;border-right:1px solid #8595a477}
+.wish-fold-cover-star{position:absolute;top:48%;left:35%;color:#e0c18c;font-size:20px}
+.wish-fold-cover-type{position:absolute;inset:0;z-index:4;pointer-events:none;display:flex;flex-direction:column;align-items:center;padding:38px 20px;box-sizing:border-box;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;text-shadow:0 2px 8px #071423;color:#f1d8a5}
+.wish-fold-cover-type>span{font:10px/1.8 Georgia,serif;letter-spacing:.28em}
+.wish-fold-cover-type h3{font-weight:400;font-size:clamp(22px,4cqi,30px);line-height:1.7;letter-spacing:.15em;margin:45px 0 8px;overflow-wrap:anywhere}
+.wish-fold-cover-type>i{font-style:normal;font-size:16px}
+.wish-fold-cover-type>p{align-self:flex-start;margin:auto 0 0;text-align:left;line-height:2.1;font-size:12px;letter-spacing:.2em}
+.wish-fold-closed .wish-fold-cover-type{opacity:1;visibility:visible;transition-delay:.65s}
+.wish-fold-inside-face{transform:rotateY(180deg);background:linear-gradient(#e3e7decc,#e9eadde6 62%,#e5e6dc25),url('/images/wishes/lunar-paper.png') center bottom/auto 100%,#e6e8dd;border:1px solid #babdad;color:#4d6070;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 10px;box-shadow:inset 5px 0 12px #52677a18}
+.wish-fold-inside-face p{font-size:13px;line-height:2.7;letter-spacing:.12em;white-space:nowrap;margin:25px 0 65px}
+.wish-fold-inside-face small{font:8px/1.8 Georgia,serif;letter-spacing:.15em;writing-mode:vertical-rl;position:absolute;bottom:30px}
+.wish-fold-side-moon{font-size:36px;color:#b69c6c}
+.wish-fold-side-star{font-size:30px;color:#b69c6c}
+.wish-fold-open .wish-fold-wing-left{transform:rotateY(-180deg)}
+.wish-fold-open .wish-fold-wing-right{transform:rotateY(180deg)}
+.wish-fold-half .wish-fold-wing-left{transform:rotateY(-120deg)}
+.wish-fold-half .wish-fold-wing-right{transform:rotateY(20deg)}
+.wish-fold-controls{display:inline-flex;gap:4px;padding:4px;border:1px solid #bdab8340;border-radius:30px;background:#08121c99;font-family:inherit}
+.wish-fold-controls button{padding:8px 20px;border:0;border-radius:22px;background:transparent;color:#c9c5b9;font-family:inherit;font-size:13px;line-height:1.6;cursor:pointer;min-height:38px;transition:background .2s,color .2s}
+.wish-fold-controls button[aria-pressed=true]{background:#dfc595;color:#1c2f40;box-shadow:0 2px 8px #0003}
+.wish-fold-controls button:disabled,.wish-fold-reply:disabled{cursor:wait;opacity:.55}
+.wish-fold-controls button:focus-visible,.wish-fold-reply:focus-visible{outline:2px solid #c3dcf0;outline-offset:3px}
+.wish-fold-caption{font-size:12px;line-height:1.8;letter-spacing:.12em;color:#b6b4ae;margin:12px 0 6px}
+.wish-fold-reply{appearance:none;border:0;border-bottom:1px solid #ceba8b55;border-radius:0;background:transparent;padding:8px 3px;color:#e5cfaa;font-family:inherit;font-size:13px;cursor:pointer}
+@container (max-width:520px){
+ .wish-fold-scene{padding:18px 8px 22px}
+ .wish-fold-book{width:100%;max-width:340px}
+ .wish-fold-paper{min-height:425px;padding:25px 28px 110px}
+ .wish-fold-message{font-size:19px}
+ .wish-fold-cover-type h3{font-size:27px}
+ .wish-fold-open .wish-fold-wing-left{transform:rotateY(-92deg);opacity:0}
+ .wish-fold-open .wish-fold-wing-right{transform:rotateY(92deg);opacity:0}
+ .wish-fold-wing{transition:transform .8s,opacity .25s .3s}
+ .wish-fold-half .wish-fold-wing-left{transform:rotateY(-78deg)}
+ .wish-fold-half .wish-fold-wing-right{transform:rotateY(10deg)}
+ .wish-fold-controls button{padding-inline:18px}
+}
+@media(prefers-reduced-motion:reduce){.wish-fold-wing,.wish-fold-cover-type,.wish-fold-controls button{transition:none!important}}
+.wish-fold-message{text-wrap:balance}

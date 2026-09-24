@@ -1,4 +1,4 @@
-# 月球来信 · 中秋探索计划
+# Moonpost · 月球来信
 
 保留原来的五种游戏机制，重做为月球邮局主题。首页参考用户提供的构图，以银河和月面岩石为背景、暖金色按钮与月牙标志、可交互的真实月球，以及坐在岩石上抱着月信的小白兔。游戏页面沿用邮局视觉规范。
 
@@ -59,3 +59,22 @@ src/
 当前分支 `feat/floating-moon` 保留原首页布局。曾探索的整屏月球版本保存在 `feat/interactive-moon`，未合入当前页面。
 
 月球经度接缝已修正：球面经度跨界使用连续双线性采样，避免隐式 mip 层级跳变；极点法线使用安全切线计算。
+
+## Cloudflare Pages deployment
+
+Connect the GitHub repository `Yiyang0659/Moonpost` through **Workers & Pages > Create > Pages > Import an existing Git repository**.
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Framework preset | React (Vite), or None with the settings below |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | Leave empty (repository root) |
+| Node.js version | `22` (specified in `.nvmrc`) |
+
+No API keys or runtime environment variables are required. After deployment, use the actual `*.pages.dev` URL shown by Cloudflare. Future pushes to `main` trigger automatic builds. Use the Pages workflow, not the Workers script deployment workflow; no Wrangler deploy command is needed.
+
+The app uses hash routes such as `/#/parkour`, so no server-side route rewriting is needed. Only `dist` is published. Player progress and wishes remain local to each browser; hosting does not enable shared messages or cross-device saves.
+
+Official configuration reference: https://developers.cloudflare.com/pages/configuration/build-configuration/

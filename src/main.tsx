@@ -4,4 +4,5 @@ import App from './App';
 import './index.css';
 import './theme-post.css';
 import './game-visual-refresh.css';
+import './station-shell.css';
 createRoot(document.getElementById('root')!).render(<HashRouter><App/></HashRouter>);

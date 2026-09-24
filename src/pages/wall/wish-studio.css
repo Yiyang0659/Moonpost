@@ -1,0 +1,150 @@
+/* The writing desk is deliberately isolated from the existing scene and hero. */
+.wish-studio{--wish-ink:#edf0f3;--wish-muted:#a1afbe;--wish-blue:#bbd4e8;--wish-gold:#e9c48d;display:grid;grid-template-columns:minmax(300px,.78fr) minmax(0,1.22fr);grid-template-rows:auto auto 1fr;gap:20px 24px;margin-top:30px;color:var(--wish-ink);scroll-margin-top:130px}
+.wish-studio *{box-sizing:border-box}
+.wish-studio button,.wish-studio input,.wish-studio textarea,.wish-studio select{font:inherit}
+.wish-studio button{cursor:pointer}
+.wish-studio button:disabled{cursor:default;opacity:.55}
+.wish-studio :is(button,input,textarea,select,summary):focus-visible{outline:2px solid var(--wish-gold);outline-offset:4px}
+.wish-studio button{transition:background .18s,border-color .18s,color .18s,transform .18s}
+.wish-intro-line{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 3px 3px}
+.wish-intro-line>p{margin:0;font-size:12px;color:var(--wish-muted);line-height:1.8}
+.wish-intro-line>p>span{display:block;color:#e7dfd1;font-family:var(--display),serif;font-size:19px;letter-spacing:.04em}
+.wish-intro-line>div{display:flex;align-items:center;gap:12px;white-space:nowrap;font-size:11px;color:#a7b2bf}
+.wish-intro-line i{font-style:normal;color:#627185}.wish-intro-line .is-current{color:var(--wish-gold)}
+.wish-panel{min-width:0;border:1px solid #bacce331;border-radius:18px;background:linear-gradient(130deg,#182333f5,#101b28f5);box-shadow:inset 0 1px #d7e7fb08,0 14px 30px #0003}
+.wish-compose{grid-column:1;grid-row:2;padding:26px 27px}
+.wish-section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:16px}
+.wish-eyebrow{font:10px/1.5 Arial,sans-serif;letter-spacing:.2em;color:#b6c6d6}
+.wish-section-title h3{margin:7px 0 0;font:500 24px/1.4 var(--display),serif;color:#f5ecde;letter-spacing:.04em}
+.wish-section-number{font:italic 40px/1 Georgia,serif;color:#9ab1ce42}
+.wish-fields{min-width:0;padding:0;margin:0;border:0}
+.wish-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wish-recipient-group{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-bottom:25px}
+.wish-recipient-group button{padding:9px 2px;min-height:41px;border:1px solid #9db6d02e;border-radius:8px;background:#9ab8d405;color:#b4c1cf;font-size:12px;white-space:nowrap}
+.wish-recipient-group button:hover{border-color:#b8d4ed80;color:#e9f3fb}
+.wish-recipient-group button[aria-pressed=true]{background:#abcbe519;border-color:#b8d3e591;color:#e6f1fb;box-shadow:inset 0 0 0 1px #b2cfe00b}
+.wish-field-label{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 0 9px;font-size:12px}
+.wish-field-label label{color:#ebedf0;font-size:13px;font-weight:500}
+.wish-field-label label span{margin-left:6px;font-size:11px;font-weight:400;color:var(--wish-muted)}
+.wish-field-label>span{font-size:10px;color:var(--wish-muted)}
+.wish-input-wrap{position:relative}
+.wish-fields input,.wish-fields textarea{display:block;width:100%;min-width:0;border:1px solid #a7bed334;border-radius:9px;background:#0b152185;color:#f2eee7;font-size:14px;line-height:1.8;padding:12px 14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.wish-fields textarea{min-height:142px;resize:vertical;padding-bottom:32px}
+.wish-fields input::placeholder,.wish-fields textarea::placeholder{color:#8293a6;opacity:1}
+.wish-fields input:focus,.wish-fields textarea:focus{border-color:#b6d0e7a3;box-shadow:0 0 0 3px #b1cdea0a}
+.wish-input-wrap>span{position:absolute;bottom:11px;right:13px;font-size:10px;color:#9baabe;pointer-events:none}
+.wish-input-wrap>span.is-over,.wish-legacy-note{color:#f0baa6}
+.wish-legacy-note{font-size:11px;line-height:1.7;margin:9px 0}
+.wish-inspiration{margin:12px 0 23px}
+.wish-inspiration>div:first-child{display:flex;justify-content:space-between;gap:7px;align-items:center;color:var(--wish-muted);font-size:11px}
+.wish-inspiration>div:first-child>button{min-height:36px;padding:6px 0 6px 10px;border:0;background:none;color:var(--wish-gold);font-size:12px}
+.wish-inspiration details{margin-top:5px}
+.wish-inspiration summary{min-height:34px;display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:11px;color:#b5c1cf;cursor:pointer}
+.wish-inspiration summary::-webkit-details-marker{display:none}.wish-inspiration details[open] summary>span{transform:rotate(45deg)}
+.wish-quick-options{display:grid;gap:5px;padding:5px 0}
+.wish-quick-options button{min-height:36px;padding:8px 11px;text-align:left;color:#ced7e0;background:#bdd8ec08;border:1px solid #a6bed820;border-radius:6px;font-size:11px;line-height:1.6}
+.wish-quick-options button:hover{border-color:#d7ba8180;color:#f5dcad}
+.wish-suggestion{margin:8px 0;padding:13px 15px;border:1px dashed #d6ba8266;border-radius:8px;background:#e4c78a08}
+.wish-suggestion p{margin:0 0 6px;color:#eee0c6;font:15px/1.9 var(--display),serif;overflow-wrap:anywhere}
+.wish-suggestion button{min-height:32px;padding:2px 0;background:transparent;border:0;color:var(--wish-gold);font-size:11px}
+.wish-replace-confirm{padding:11px 13px;margin:9px 0;background:#e9c48d0b;border:1px solid #e9c48d4d;border-radius:8px}
+.wish-replace-confirm p{font-size:12px;color:#ead5b5;line-height:1.6;margin:0 0 7px}
+.wish-replace-confirm button{min-height:36px;padding:6px 10px;margin-right:8px;border:1px solid #d0b58169;border-radius:6px;background:none;color:#ead5b5;font-size:11px}
+.wish-edit-note{display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:11px;color:#e4cda8;margin:-8px 0 14px;line-height:1.6}
+.wish-edit-note button{border:0;background:transparent;color:#bfd4e5;text-decoration:underline;padding:8px 0;min-height:36px}
+.wish-workspace{grid-column:2;grid-row:2/4;align-self:start;overflow:hidden}
+.wish-tabs{display:flex;gap:26px;padding:0 25px;border-bottom:1px solid #bbd2e521}
+.wish-tabs>button{position:relative;display:flex;align-items:center;gap:9px;padding:19px 2px 18px;border:0;background:none;color:#a8b5c3;font-size:14px;min-height:60px}
+.wish-tabs>button[aria-selected=true]{color:#f4ead9}
+.wish-tabs>button[aria-selected=true]:after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:#e8c992}
+.wish-tabs>button>span{font:8px Arial,sans-serif;letter-spacing:.1em;color:#a7c6de;border:1px solid #a7c6de4a;border-radius:3px;padding:3px 4px}
+.wish-tabs>button>b{min-width:22px;padding:2px 5px;border-radius:12px;background:#c9d9e81a;color:#c0d2e1;font-size:10px;font-weight:400;text-align:center}
+.wish-preview-panel{padding:24px 27px 22px}
+.wish-preview-heading{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:17px}
+.wish-preview-heading p{margin:0;color:var(--wish-muted);font-size:11px}
+.wish-style-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.wish-style-options>button{padding:0;border:0;background:none;color:#a8b8ca;min-width:0}
+.wish-style-options>button>strong{display:block;font-size:11px;font-weight:400;padding:9px 0 3px}
+.wish-style-options>button[aria-pressed=true]>strong{color:#f0d7ab}
+.wish-mini-paper{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:5px;height:67px;border-radius:5px;border:1px solid #b7cde044;background:#c1d4e918;padding:12px 14px;box-shadow:0 4px 9px #0002;transition:transform .18s,outline-color .18s}
+.wish-style-options>button:hover .wish-mini-paper{transform:translateY(-2px)}
+.wish-style-options>button[aria-pressed=true] .wish-mini-paper{outline:1px solid #e4c894;outline-offset:4px}
+.wish-mini-paper i{font-style:normal;font-size:14px;color:#d1dfed;position:absolute;right:11px;top:8px}
+.wish-mini-paper em{display:block;width:52%;height:2px;background:currentColor;opacity:.45}.wish-mini-paper em+em{width:36%}
+.wish-mini-paper b{display:grid;place-items:center;position:absolute;right:-5px;bottom:-5px;width:17px;height:17px;border-radius:50%;border:2px solid #172230;background:#e7c78d;color:#213041;font-size:10px}
+.wish-mini-note{background:#e5d5b6;color:#6e604b;border-color:#e6d8bd;border-radius:2px 12px 2px 2px}.wish-mini-note i{color:#a27a46}
+.wish-mini-fold{background:linear-gradient(90deg,#c5d4c7 48%,#809788 50%,#d8e1d8 52%);color:#426250;border-color:#c5d1c4}.wish-mini-fold i{color:#5a7b68}
+.wish-mini-ticket{background:#ddc6a0;color:#6f5539;border-color:#e7d3b4;border-radius:1px}.wish-mini-ticket:after{content:'';position:absolute;top:0;bottom:0;right:28%;border-left:1px dashed #8a684b66}.wish-mini-ticket i{color:#977246;right:5px;font-size:11px}
+.wish-preview-stage{padding:27px 0 0;perspective:1200px}
+.wish-preview-caption{text-align:center;font:14px/1.8 var(--display),serif;color:#c7d2de;margin:4px 0 0}
+.wish-preview-caption span{display:block;font:10px/1.7 Arial,sans-serif;color:#9eadbc;margin-top:6px}
+.wish-submit-area{grid-row:3;grid-column:1;align-self:start;padding:0 7px}
+.wish-primary{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;min-height:54px;background:linear-gradient(115deg,#fcf0d8,#e5c190);border:1px solid #ffe6bc;border-radius:12px;color:#182736;font-size:16px!important;box-shadow:0 7px 23px #f4ce9415,inset 0 1px #fff9e9}
+.wish-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 23px #f4ce9425}
+.wish-primary>span+span{font-size:23px;font-weight:400}
+.wish-submit-hint{margin:11px 0 4px;text-align:center;color:#d3dbe4;font-size:12px;line-height:1.7}
+.wish-local-caption{text-align:center;font-size:10px;color:#a0acbc;margin:0;line-height:1.7}
+.wish-error{color:#ffd3be;background:#b8694b20;border:1px solid #f7ba9450;border-radius:8px;padding:12px 14px;font-size:12px;line-height:1.7}
+.wish-feedback{font-size:12px;line-height:1.8;color:#c5dbe2;text-align:center;margin:12px 0 0;overflow-wrap:anywhere}
+.wish-feedback:empty{display:none}
+.wish-sealing-status{display:flex;align-items:center;justify-content:center;gap:14px;color:#e9d9b8;font-size:11px;margin-top:6px;line-height:1.6}
+.wish-sealing-status>button{min-height:36px;border:0;background:transparent;color:#bcd6e9;text-decoration:underline;font-size:11px}
+.wish-album-panel{padding:22px 25px;scroll-margin-top:130px;outline:none}
+.wish-success-note{display:flex;align-items:center;gap:11px;border:1px solid #d9bd8645;background:#e9c48d09;border-radius:9px;padding:13px 14px;margin-bottom:19px}
+.wish-success-note>span{color:#e9c48d;font-size:22px}.wish-success-note>div{flex:1}.wish-success-note strong{font-size:13px;font-weight:500;color:#ead6b4}.wish-success-note p{font-size:10px;color:#b6b8b9;line-height:1.7;margin:5px 0 0}
+.wish-success-note button{white-space:nowrap;font-size:11px;min-height:38px;background:none;border:0;color:#e9d1a8;padding:3px}
+.wish-open-letter{margin:0 0 27px;border-bottom:1px solid #bdd4e127;padding-bottom:22px;outline:none;scroll-margin-top:150px}
+.wish-detail-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 14px;color:#b2c5d8;font-size:11px}
+.wish-detail-heading button{min-height:38px;background:transparent;border:0;color:#a5b6c5;padding:6px;font-size:11px}
+.wish-detail-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:8px 0 0}
+.wish-detail-actions button{min-height:38px;padding:9px 12px;font-size:11px;background:#bdd3e708;border:1px solid #b9d0e338;border-radius:7px;color:#d1dfeb}
+.wish-detail-actions button[aria-pressed=true]{color:#e6c58e;border-color:#e6c58e69}
+.wish-detail-actions .wish-postcard-link{color:#ecd4ad;border-color:#dbbb8570}
+.wish-album-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.wish-album-toolbar h3{font:500 19px/1.5 var(--display),serif;color:#eee4d3;margin:0 0 5px}
+.wish-album-toolbar p{font-size:10px;color:var(--wish-muted);margin:0;line-height:1.7}
+.wish-album-toolbar select{border:1px solid #a7c2da42;border-radius:7px;background:#162230;color:#d8e3ec;font-size:11px;padding:10px 7px;min-height:39px;max-width:110px}
+.wish-filter{display:flex;gap:8px;margin-bottom:15px}
+.wish-filter button{background:none;border:1px solid transparent;border-radius:20px;color:#aebac6;font-size:11px;padding:8px 12px;min-height:35px}
+.wish-filter button[aria-pressed=true]{color:#dfd0b4;background:#e9c48d0d;border-color:#e9c48d42}
+.wish-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:start}
+.wish-summary{--summary-accent:#b5cfe5;min-width:0;border:1px solid #a4c2dd47;border-top:2px solid var(--summary-accent);border-radius:9px;padding:13px 16px;background:#bacfe30a;transition:transform .2s,border-color .2s,box-shadow .2s}
+.wish-summary-note{--summary-accent:#e4c895;background:#e4c89508;border-color:#d3b67f45}.wish-summary-fold{--summary-accent:#adcbbd;background:#a2c5b50a;border-color:#a2c5b545}.wish-summary-ticket{--summary-accent:#d5bba6;border-style:dashed;background:#d5bba608;border-color:#d5bba64f}
+.wish-summary:hover{transform:translateY(-3px);box-shadow:0 8px 20px #02071038;border-color:var(--summary-accent)}
+.wish-summary.is-selected{border-color:#e9cc94;box-shadow:0 0 0 2px #e9cc9410}
+.wish-summary-heading{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:9px;color:var(--summary-accent);font-size:10px;letter-spacing:.1em;min-height:27px}
+.wish-summary-heading b{font-size:9px;border:1px solid #e4d3a25c;border-radius:3px;padding:3px 5px;font-weight:400;letter-spacing:0;color:#e9d4a3}
+.wish-summary-heading button{border:0;background:transparent;color:var(--summary-accent);font-size:21px;margin:-8px -9px -8px 0;padding:9px;min-width:40px;min-height:40px}
+.wish-summary-to{color:#a4b5c5;font-size:10px}
+.wish-summary>p{font:16px/1.9 var(--display),serif;color:#e7e5df;margin:9px 0 16px;min-height:90px;white-space:pre-wrap;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.wish-summary-byline{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;color:#c5d1db;padding-top:10px;border-top:1px solid #b7cfdf1e}
+.wish-summary-byline>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:48%}.wish-summary-byline small{font-size:9px;color:#9daebe;text-align:right}
+.wish-summary-actions{display:flex;justify-content:space-between;gap:8px;margin-top:5px}
+.wish-summary-actions button{border:0;background:none;color:var(--summary-accent);font-size:11px;min-height:37px;padding:7px 0}
+.wish-summary-actions button.wish-delete-action{color:#b4a4a1;font-size:10px;padding:7px 4px}
+.wish-delete-confirm{margin-top:5px;padding:10px;border:1px solid #e8bb9557;background:#e8bb950a;border-radius:6px;color:#efd6bf;font-size:11px}
+.wish-delete-confirm p{margin:0 0 7px;line-height:1.7}.wish-delete-confirm button{padding:8px;min-height:36px;border:1px solid #d4b99b66;border-radius:5px;background:none;color:#eadac5;font-size:11px;margin-right:7px}
+.wish-privacy{font-size:10px;line-height:1.8;color:#9fafbf;margin:18px 0 0}
+.wish-empty{text-align:center;padding:33px 12px;color:#b9c9d7}.wish-empty>span{font-size:30px;color:#e4c793}.wish-empty p{font-size:13px}.wish-empty button{border:0;background:transparent;color:#d7bb8f;text-decoration:underline;min-height:40px;font-size:12px}
+@media(max-width:1100px){.wish-studio{gap:18px;grid-template-columns:minmax(290px,.85fr) minmax(0,1.15fr)}.wish-compose{padding:23px 20px}.wish-preview-panel,.wish-album-panel{padding:22px 20px}.wish-intro-line>p{max-width:45%}.wish-intro-line>div{gap:8px}.wish-preview-heading{display:block}.wish-preview-heading p{margin-top:5px}.wish-style-options{gap:9px}.wish-mini-paper{height:60px;padding:10px}}
+@media(max-width:900px){.wish-studio{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;max-width:680px;margin:25px auto 0;gap:16px}.wish-intro-line{display:block}.wish-intro-line>p{max-width:none}.wish-intro-line>div{margin-top:13px}.wish-compose{grid-column:1;grid-row:2;padding:24px}.wish-workspace{grid-column:1;grid-row:3}.wish-submit-area{grid-column:1;grid-row:4;padding:0 4px}.wish-section-title{margin-bottom:17px}.wish-recipient-group{margin-bottom:20px}.wish-fields textarea{min-height:126px}.wish-preview-heading{display:flex}.wish-preview-heading p{margin:0}.wish-album-panel{scroll-margin-top:115px}.wish-studio button:not(.wish-style-options>button){min-height:44px}.wish-summary>p{min-height:65px}.wish-feedback{font-size:12px}}
+@media(max-width:650px){.wish-studio{margin:22px 12px 0}.wish-intro-line{padding:0 5px 4px}.wish-intro-line>p>span{font-size:18px}.wish-intro-line>p{font-size:11px}.wish-intro-line>div{font-size:10px;gap:12px}.wish-compose{padding:21px 19px}.wish-section-title h3{font-size:22px}.wish-section-number{font-size:34px}.wish-panel{border-radius:13px}.wish-tabs{padding:0 19px;gap:23px}.wish-tabs>button{font-size:13px;padding:16px 0;min-height:55px}.wish-preview-panel,.wish-album-panel{padding:20px 16px}.wish-preview-heading{display:block}.wish-preview-heading p{margin-top:6px}.wish-style-options{gap:10px}.wish-mini-paper{height:59px;padding:8px}.wish-mini-paper i{font-size:12px;right:8px}.wish-style-options>button>strong{font-size:10px;padding-top:12px}.wish-preview-stage{padding-top:24px}.wish-preview-caption{font-size:13px}.wish-success-note{flex-wrap:wrap;padding:12px}.wish-success-note>div{flex-basis:75%}.wish-success-note>button{margin-left:28px}.wish-summary-grid{grid-template-columns:1fr}.wish-summary{padding:13px 17px}.wish-summary>p{min-height:0;font-size:17px}.wish-summary-byline{font-size:11px}.wish-summary-byline small{font-size:10px}.wish-album-toolbar h3{font-size:18px}.wish-detail-actions{gap:8px}.wish-detail-actions .wish-postcard-link{width:100%}.wish-sealing-status{flex-wrap:wrap;gap:3px}.wish-inspiration>div:first-child{font-size:11px}.wish-primary{min-height:56px}.wish-privacy{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.wish-studio *,.wish-studio *:before,.wish-studio *:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.wish-summary:hover,.wish-primary:hover:not(:disabled),.wish-style-options>button:hover .wish-mini-paper{transform:none}}
+/* Match the selectors and collection to the four physical stationery designs. */
+.wish-mini-moon{background:#f2eada url('/images/wishes/lunar-paper.png') center/cover;color:#46596a;border-color:#dfc69b}
+.wish-mini-moon i{color:#ae8d54}
+.wish-mini-note{background:#f5e8c8 url('/images/wishes/osmanthus-paper.png') left 72%/cover;color:#79674d}
+.wish-mini-fold{background:linear-gradient(#13294040,#10203070),url('/images/keepsakes/osmanthus-moon.webp') center 58%/cover;color:#e2c291;border-color:#a490704f}
+.wish-mini-fold i{color:#e0c292}.wish-mini-fold:after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:#b5c3cd5e}
+.wish-mini-ticket{background:#e6d5b3 url('/images/wishes/lunar-paper.png') center/cover;color:#75664d}
+.wish-summary-moon{background:linear-gradient(#172b43f0,#142136ed),url('/images/station-scenes/wall.webp') center/cover;border-color:#b99a616e;--summary-accent:#d9bd8b}
+.wish-summary-note{background:linear-gradient(100deg,#f1e4c8ef,#f1e4c8ba),url('/images/wishes/osmanthus-paper.png') left bottom/cover;--summary-accent:#8a6b37;border-color:#d9c094}
+.wish-summary-ticket{background:linear-gradient(100deg,#ebd9b5eb,#ebd9b5b8),url('/images/wishes/lunar-paper.png') right bottom/cover;--summary-accent:#745c38;border-color:#d3b67f}
+.wish-summary-fold{background:linear-gradient(#162d40ef,#12253bec),url('/images/keepsakes/osmanthus-moon.webp') center 55%/cover;--summary-accent:#d8bf93;border-color:#ad997876}
+.wish-summary-note>p,.wish-summary-ticket>p{color:#3c4650}.wish-summary-note .wish-summary-to,.wish-summary-ticket .wish-summary-to{color:#716853}
+.wish-summary-note .wish-summary-byline,.wish-summary-ticket .wish-summary-byline{color:#645b49;border-color:#8c77563b}
+.wish-summary-note .wish-summary-byline small,.wish-summary-ticket .wish-summary-byline small{color:#776b58}
+.wish-summary-note .wish-delete-action,.wish-summary-ticket .wish-delete-action{color:#80604d!important}
+.wish-summary-note .wish-delete-confirm,.wish-summary-ticket .wish-delete-confirm{background:#f6ecd9;color:#73583b;border-color:#9e8050}
+.wish-summary-note .wish-delete-confirm button,.wish-summary-ticket .wish-delete-confirm button{color:#5e4831;border-color:#aa8c62}
+.wish-summary-note .wish-summary-heading b,.wish-summary-ticket .wish-summary-heading b{color:#7d5a2d;border-color:#a7834c77}

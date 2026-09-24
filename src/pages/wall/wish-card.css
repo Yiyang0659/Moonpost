@@ -1,0 +1,127 @@
+/* Four printed objects. All letter content remains selectable, live HTML. */
+.wish-letter-wrap{width:100%;min-width:0;container-type:inline-size;perspective:1600px;--paper-ink:#26384b;--paper-gold:#b6915c;--paper-soft:#7d796d;--paper-rule:#ac94674a;color:var(--paper-ink)}
+.wish-paper{position:relative;isolation:isolate;box-sizing:border-box;background-color:#f2eada;border:1px solid #dbbd88;border-radius:9px;box-shadow:0 14px 35px #01091645,inset 0 0 0 4px #fff8e57a;color:var(--paper-ink);font-family:'Songti SC','STSong','Noto Serif SC',serif;overflow-wrap:anywhere}
+.wish-paper:before{content:'';position:absolute;z-index:-1;inset:5px;border:1px solid #b395654d;border-radius:5px;pointer-events:none}
+.wish-paper :is(h4,p,blockquote){font-weight:400}
+.wish-paper-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;position:relative}
+.wish-paper-heading h4{font-size:clamp(17px,3cqi,25px);line-height:1.5;letter-spacing:.2em;margin:0 0 2px}
+.wish-paper-heading small{display:block;font:8px/1.8 Georgia,serif;letter-spacing:.35em;color:#6c6c62}
+.wish-paper-heading>p{font-size:11px;line-height:2;letter-spacing:.2em;margin:3px 0 0 auto;text-align:center;color:#7c7b72}
+.wish-paper-heading>p small{font-size:6px;margin-top:8px;letter-spacing:.24em}
+.wish-paper-postage{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 61px;min-height:82px;outline:1px dashed #bd9b67;outline-offset:5px;border:4px solid #efdfbd;background:radial-gradient(circle at 20% 20%,#8c84624d,transparent 35%),linear-gradient(125deg,#243b51,#142b3f);color:#e6c58e;box-shadow:0 1px 3px #5541243b}
+.wish-paper-postage>i{font-style:normal;font-size:39px;line-height:1.3;text-shadow:1px 0 #fff6ce}
+.wish-paper-heading .wish-paper-postage>small{color:#d9bd8b;letter-spacing:.2em;font-size:8px;margin-top:1px;white-space:nowrap}
+.wish-paper-address{display:flex;align-items:baseline;gap:17px;max-width:85%;margin-top:28px;font-size:19px;line-height:1.8;letter-spacing:.1em}
+.wish-paper-address small,.wish-paper-footer small{font:9px/1.6 Georgia,serif;letter-spacing:.16em}
+.wish-paper-address>span{flex:1;padding-left:8px;border-bottom:1px solid #7b817378}
+.wish-paper-message{font-size:clamp(23px,3.7cqi,30px);line-height:1.95;letter-spacing:.13em;white-space:pre-wrap;overflow-wrap:anywhere;position:relative;margin:25px 0 40px 28px;max-width:72%;min-height:108px;text-shadow:0 1px 5px #fffdf0aa}
+.wish-paper-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;position:relative;margin-top:auto;font-size:13px;line-height:1.8}
+.wish-paper-footer>span{display:flex;align-items:baseline;gap:14px;min-width:0;max-width:65%;flex:1}
+.wish-paper-footer b{font-size:16px;font-weight:400;letter-spacing:.09em;min-width:0;min-width:40%;padding:0 7px 4px;border-bottom:1px solid #7b817378}
+.wish-paper-footer time{font:9px/1.8 Georgia,serif;letter-spacing:.1em;text-align:right;color:#4e5960}
+.wish-moon-stage{perspective:1300px}
+.wish-moon-paper{padding:32px 36px 27px;min-height:365px;background-image:linear-gradient(90deg,#f4ecd752,#f4ecd729),url('/images/wishes/lunar-paper.png');background-position:center;background-size:cover;display:flex;flex-direction:column;animation:wish-unseal-paper .5s ease both}
+.wish-ink-postmark{width:154px;color:#c2a570;pointer-events:none}
+.wish-sealed-envelope{position:relative;display:block;isolation:isolate;width:100%;min-height:345px;aspect-ratio:1.9;padding:0;overflow:hidden;border:1px solid #b49a70!important;border-radius:10px;background:linear-gradient(120deg,#24374f,#102239 65%,#1f3349)!important;box-shadow:0 18px 28px #02091270,inset 0 0 0 5px #c2a7780c;cursor:pointer;color:#eccda0;text-align:left;animation:wish-envelope-appear .5s ease both}
+.wish-sealed-envelope:before{content:'';position:absolute;inset:6px;border:1px solid #d6b88830;border-radius:5px;pointer-events:none;z-index:6}
+.wish-sealed-envelope:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.7'/%3E%3C/svg%3E");z-index:5;mix-blend-mode:soft-light}
+.wish-envelope-scene{position:absolute;inset:35% 0 0;background:linear-gradient(#14253ef2,transparent 46%,#0a182d40),url('/images/station-scenes/wall.webp') 54% 57%/cover;opacity:.86;z-index:1}
+.wish-envelope-seams{position:absolute;inset:0;z-index:2;background:linear-gradient(32deg,transparent 49.85%,#c6a67155 50%,transparent 50.2%),linear-gradient(-32deg,transparent 49.85%,#c6a67155 50%,transparent 50.2%)}
+.wish-envelope-flap{position:absolute;inset:0 0 33%;z-index:3;clip-path:polygon(0 0,100% 0,100% 13%,50% 100%,0 13%);background:linear-gradient(151deg,#364b65,#172940 63%,#0e1d30);filter:drop-shadow(0 5px 4px #000)}
+.wish-envelope-flap:before{content:'';position:absolute;inset:0;clip-path:polygon(0 11%,50% 98.6%,100% 11%,100% 13%,50% 100%,0 13%);background:linear-gradient(90deg,#87633e,#f1d39b 45%,#a58557)}
+.wish-envelope-title{position:absolute;top:12%;left:12%;right:12%;z-index:4;display:flex;align-items:center;flex-direction:column;text-align:center;line-height:1.8;pointer-events:none}
+.wish-envelope-title strong{font:400 clamp(18px,3cqi,25px)/1.6 'Songti SC',serif;letter-spacing:.25em}
+.wish-envelope-title small{font:7px/1.7 Georgia,serif;letter-spacing:.45em;margin-top:1px}
+.wish-envelope-title em{font-style:normal;font-family:'Songti SC',serif;font-size:12px;letter-spacing:.14em;margin-top:13px;color:#d8bc87}
+.wish-wax-seal{position:absolute;z-index:7;left:50%;top:62%;transform:translate(-50%,-50%) rotate(-9deg);width:92px;height:92px;display:grid;place-items:center;border-radius:45% 49% 43% 47%;border:3px solid #d4ac61;background:radial-gradient(ellipse at 25% 25%,#dfb869,#9d6c2c 65%,#f5d789 75%,#936328);box-shadow:0 6px 8px #03071288,0 0 0 2px #654824,inset 0 0 0 2px #f6d598,inset 0 0 0 6px #b58340;transition:transform .35s,box-shadow .35s}
+.wish-wax-seal:before{content:'';position:absolute;inset:12px;border:1px solid #ffdb92;border-radius:50%;box-shadow:inset 1px 2px 3px #704a18,1px 2px 3px #ffdb8270}
+.wish-wax-seal>span{font:51px/1 Georgia,serif;color:#e9c582;text-shadow:1px 2px 1px #66451f,-1px -1px 1px #ffe6a4;transform:rotate(5deg)}
+.wish-wax-seal>i{position:absolute;font-style:normal;right:19px;top:32px;color:#ecc875;font-size:12px;text-shadow:1px 1px #745321}
+.wish-sealed-envelope:hover:not(:disabled) .wish-wax-seal{transform:translate(-50%,-50%) rotate(-3deg) scale(1.05);box-shadow:0 8px 12px #02081699,0 0 0 2px #785e37,inset 0 0 0 2px #f6d598,inset 0 0 0 6px #b58340}
+.wish-sealed-envelope>.wish-ink-postmark{position:absolute;right:3%;bottom:21%;width:21%;z-index:4;transform:rotate(-10deg)}
+.wish-envelope-poem{position:absolute;left:6%;bottom:10%;font:13px/1.9 'Songti SC',serif;letter-spacing:.15em;z-index:4;text-shadow:0 2px 3px #08182a}
+.wish-envelope-open-hint{position:absolute;right:6%;bottom:8%;font-size:10px;letter-spacing:.1em;color:#f0dab6;z-index:4;text-shadow:0 2px 3px #08182a}
+.wish-moon-reply{padding:30px 35px 25px;min-height:345px;background:linear-gradient(#f4ecddd9,#f4ecddd9),url('/images/wishes/lunar-paper.png') center/cover;animation:wish-unseal-paper .5s ease both}
+.wish-moon-reply .wish-paper-heading{padding-bottom:18px;border-bottom:1px solid var(--paper-rule)}
+.wish-moon-reply .wish-paper-heading h4{font-size:16px;letter-spacing:.14em}
+.wish-reply-moon{font:35px/1 Georgia,serif;color:#c1a064}
+.wish-reply-quotes{display:grid;grid-template-columns:1fr 1fr}
+.wish-reply-quotes blockquote{position:relative;white-space:pre-wrap;margin:0;padding:22px 20px 20px 26px;border-bottom:1px solid var(--paper-rule);font-size:14px;line-height:2;letter-spacing:.03em}
+.wish-reply-quotes blockquote:before{content:'“';position:absolute;left:5px;top:16px;font:30px Georgia,serif;color:#b29569}
+.wish-reply-quotes blockquote:nth-child(odd){border-right:1px solid var(--paper-rule)}
+.wish-reply-quotes .wish-reply-personal{color:#223b50}
+.wish-reply-quotes small{display:block;font-size:9px;letter-spacing:.08em;color:#8a7960;margin-top:4px}
+.wish-reply-foot{text-align:center;padding-top:15px;color:#8d785a;font-size:11px;letter-spacing:.18em}.wish-reply-foot>span{color:#b59664}.wish-reply-foot p{margin:8px 0 4px}.wish-reply-foot small{font:7px/1.8 Georgia,serif;letter-spacing:.2em}
+.wish-object-caption{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px 0 11px;color:#eee0c6;font:14px/1.7 'Songti SC',serif;letter-spacing:.15em;text-align:center}
+.wish-object-caption>span{color:#9c957f}.wish-object-caption small{font:9px/1.6 Georgia,serif;letter-spacing:.2em;color:#bdb6a6}
+.wish-object-controls{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.wish-object-controls>button{padding:8px 15px;min-height:40px;background:#172333;border:1px solid #b8c8d22b;border-radius:7px;color:#c3cbd1;font-size:11px;line-height:1.7}
+.wish-object-controls>button[aria-pressed=true]{background:#d4b8821a;color:#f0d9ad;border-color:#e3c99586}
+.wish-object-controls>button:hover{border-color:#ddc5988c}
+.wish-object-help{font-size:10px;line-height:1.8;text-align:center;color:#afb9c3;margin:11px 0 0}
+.wish-turn{display:block;min-height:42px;max-width:100%;margin:11px auto 0;padding:8px 17px;border:1px solid #d2bf9142;border-radius:30px;background:#d2bf9108;color:#e0cda8;font-size:12px;line-height:1.7;letter-spacing:.04em}
+.wish-turn:hover{border-color:#dcc392a0;background:#d2bf9115}
+.wish-letter-wrap :is(button):focus-visible{outline:2px solid #e7c487;outline-offset:4px}
+.wish-note-object{perspective:1500px;width:min(100%,390px);margin:auto}
+.wish-note-rotator{display:grid;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.is-note-turned .wish-note-rotator{transform:rotateY(-180deg)}
+.wish-note-front,.wish-note-back{grid-area:1/1;min-width:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:520px;padding:28px 30px 24px;border-color:#dec69d;border-radius:7px;display:flex;flex-direction:column}
+.wish-note-front{background-image:linear-gradient(#edce8a21,#edce8a16),url('/images/wishes/osmanthus-paper.png');background-position:left bottom;background-size:100% 100%;}
+.wish-note-back{transform:rotateY(180deg);background-image:linear-gradient(#efe1bb45,#efe1bb12),url('/images/wishes/lunar-paper.png');background-position:62% bottom;background-size:auto 100%}
+.wish-note-front:before,.wish-note-back:before{border:0}
+.wish-note-heading{display:flex;justify-content:space-between;gap:18px;align-items:center;color:#91754e}
+.wish-note-heading small{font:9px/1.7 Georgia,serif;letter-spacing:.35em}
+.wish-note-heading h4{font-size:13px;letter-spacing:.16em;margin:5px 0 0;line-height:1.7}
+.wish-note-heading>span{font-size:29px;line-height:1;color:#c99e58;opacity:.85}
+.wish-note-address{align-self:center;font-size:23px;line-height:1.8;border-bottom:1px solid #8b7c6359;padding:0 8px;margin-top:55px;letter-spacing:.12em;color:#4f4330}
+.wish-note-message{position:relative;font:400 25px/1.9 'Ma Shan Zheng','Songti SC',serif;letter-spacing:.07em;text-align:center;white-space:pre-wrap;overflow-wrap:anywhere;margin:15px 5px 25px;color:#443d2d;text-shadow:0 1px #fff8e1;min-height:110px}
+.wish-note-signature{display:flex;flex-direction:column;align-items:flex-end;gap:7px;margin-top:auto;color:#554b39;text-align:right;line-height:1.7;font-size:15px;letter-spacing:.07em;padding:0 0 68px 44px}
+.wish-note-signature time{font-size:10px;letter-spacing:.03em;color:#79674c}
+.wish-note-foot{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;font:9px/1.9 'Songti SC',serif;color:#7a6d50;position:relative;margin-top:auto}
+.wish-note-foot small{white-space:nowrap;font:7px/1.8 Georgia,serif;letter-spacing:.14em}
+.wish-note-corner{position:absolute;right:-1px;top:-1px;width:63px;height:63px;clip-path:polygon(0 0,100% 0,100% 100%);background:linear-gradient(45deg,#b49462,#f0dcac 46%,#fff5d6 52%,#f1deb8)!important;border:0!important;border-radius:0 6px 0 0;box-shadow:-5px 5px 9px #77532133;cursor:pointer;transform-origin:top right;transition:width .35s,height .35s;z-index:3;padding:0}
+.wish-note-corner:before{content:'';position:absolute;inset:0;background:#e6bc71;clip-path:polygon(0 0,100% 100%,75% 25%);opacity:.3}
+.wish-note-corner>span{position:absolute;top:8px;right:10px;color:#c29649;font-size:18px;transform:rotate(25deg)}
+.wish-note-corner:hover,.wish-note-corner:focus-visible{width:90px;height:90px}
+.wish-note-corner:focus-visible{outline:0!important;filter:drop-shadow(-2px 3px 3px #a27835);background:#f3c97d!important}
+.wish-note-front .wish-note-heading>span{margin-right:28px}
+.wish-note-back .wish-note-message{margin:66px 5px 24px;min-height:155px;font:21px/2.1 'Songti SC',serif;text-align:left;letter-spacing:.06em}
+.wish-note-reply-sign{align-self:flex-end;font-size:15px;color:#6d624e;margin-bottom:82px}
+.wish-ticket-object{display:grid;grid-template-columns:minmax(0,1fr) 29%;min-height:265px;border:0;border-radius:12px;background:linear-gradient(#e6cf9d52,#e6cf9d52),url('/images/wishes/lunar-paper.png') center/100% 100%,#ecddbc;box-shadow:none;mask-image:radial-gradient(circle at 0 50%,transparent 15px,#000 16px),radial-gradient(circle at 100% 50%,transparent 15px,#000 16px);mask-composite:intersect}
+.wish-ticket-object:before{inset:5px;border-color:#ad8a5f66;border-radius:10px}
+.wish-ticket-main{padding:24px 24px 18px 29px;display:flex;flex-direction:column;min-width:0;background:linear-gradient(90deg,#eee0c250,#f1e6d123)}
+.wish-ticket-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #a48a605c;padding-bottom:10px}
+.wish-ticket-heading h4{font-size:19px;line-height:1.5;letter-spacing:.17em;margin:0}.wish-ticket-heading small{display:block;font:7px/1.8 Georgia,serif;letter-spacing:.3em}
+.wish-ticket-heading>span{text-align:right;font-size:10px;line-height:1.8;color:#796d57;letter-spacing:.1em}.wish-ticket-heading>span small{font-size:5px;letter-spacing:.2em;margin-top:3px}
+.wish-ticket-to{font-size:13px;line-height:1.8;letter-spacing:.12em;margin-top:18px}
+.wish-ticket-message{position:relative;white-space:pre-wrap;font:400 clamp(20px,3.3cqi,26px)/1.8 'Songti SC',serif;letter-spacing:.07em;overflow-wrap:anywhere;margin:8px 0 23px;min-height:80px;text-shadow:0 1px 4px #fff8de}
+.wish-ticket-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #a48a605c;padding-top:9px;margin-top:auto;color:#7d7058;font-size:10px;line-height:1.8;letter-spacing:.1em}.wish-ticket-footer small{font:6px/1.7 Georgia,serif;letter-spacing:.2em}
+.wish-ticket-stub{position:relative;border-left:5px dotted #54473380;padding:24px 20px 17px;display:flex;flex-direction:column;background:#d7b78412;min-width:0}
+.wish-ticket-stub:before,.wish-ticket-stub:after{content:'';position:absolute;left:-10px;top:-1px;width:15px;height:10px;border-radius:0 0 15px 15px;background:#142131}.wish-ticket-stub:after{top:auto;bottom:-1px;transform:rotate(180deg)}
+.wish-ticket-stub-title{position:relative;min-height:50px;padding-bottom:10px;border-bottom:1px solid #a58c6254;padding-right:30px}
+.wish-ticket-stub-title>small{font:7px/1.8 Georgia,serif;letter-spacing:.25em}.wish-ticket-stub-title h4{font-size:17px;line-height:1.5;letter-spacing:.1em;margin:4px 0 0;white-space:nowrap}
+.wish-ticket-moon{position:absolute;right:0;top:0;font:35px/1 Georgia,serif}
+.wish-ticket-stub dl{margin:12px 0 14px;display:grid;gap:8px}
+.wish-ticket-stub dl>div{display:flex;align-items:baseline;gap:9px;min-width:0}
+.wish-ticket-stub dt{font:7px/1.8 Georgia,serif;letter-spacing:.14em;flex:0 0 30px}.wish-ticket-stub dd{font-size:12px;line-height:1.7;letter-spacing:.015em;margin:0;border-bottom:1px solid #a58c6238;flex:1;overflow-wrap:anywhere;min-width:0}
+.wish-ticket-collection{display:flex;flex-direction:column;gap:4px;margin-top:auto;padding-top:9px;border-top:1px solid #a58c6254}.wish-ticket-collection>small{font:6px/1.7 Georgia,serif;letter-spacing:.18em}.wish-ticket-collection>span{font-size:9px;line-height:1.9;color:#71634c}.wish-ticket-collection b{font-size:11px;font-weight:400;color:#283b4d;white-space:nowrap;display:block}
+.wish-ticket-punched .wish-ticket-object,.wish-ticket-collected .wish-ticket-object{mask-image:radial-gradient(circle at 0 50%,transparent 15px,#000 16px),radial-gradient(circle at 100% 50%,transparent 15px,#000 16px),radial-gradient(circle at calc(100% - 30px) 34px,transparent 10px,#000 11px);mask-composite:intersect}
+.wish-ticket-punched .wish-ticket-moon,.wish-ticket-collected .wish-ticket-moon{visibility:hidden}
+.wish-ticket-collected .wish-ticket-object{background-color:#dbbe89;filter:sepia(.1);box-shadow:inset 0 0 35px #8a663722}
+.wish-ticket-postmark{position:absolute;top:4px;right:2px;width:100px;color:#213e58;opacity:.75;transform:rotate(-16deg);pointer-events:none}
+.wish-ticket-collected .wish-ticket-stub-title{padding-right:60px;min-height:64px}.wish-ticket-collected .wish-ticket-stub-title h4{font-size:14px}
+.is-sealing .wish-wax-seal{animation:wish-wax-arrive 1.55s ease both}.is-sealing .wish-envelope-flap{animation:wish-flap-close 1.55s ease both;transform-origin:top center}
+.is-sealing .wish-note-object,.is-sealing .wish-ticket-object{animation:wish-seal-paper 1.5s ease both}
+@keyframes wish-unseal-paper{from{opacity:0;transform:translateY(8px) rotateX(5deg)}to{opacity:1;transform:none}}
+@keyframes wish-envelope-appear{from{opacity:.3;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes wish-wax-arrive{0%,40%{opacity:0;transform:translate(-50%,-50%) rotate(-25deg) scale(1.6)}65%{opacity:1;transform:translate(-50%,-50%) rotate(-9deg) scale(.94)}80%,100%{opacity:1;transform:translate(-50%,-50%) rotate(-9deg) scale(1)}}
+@keyframes wish-flap-close{0%,10%{transform:rotateX(-90deg);opacity:0}45%,100%{transform:rotateX(0);opacity:1}}
+@keyframes wish-seal-paper{0%{transform:translateY(0)}40%{transform:translateY(5px) scale(.97)}70%{transform:translateY(-2px) scale(1.01)}100%{transform:none}}
+@container (max-width:580px){.wish-moon-paper{padding:25px}.wish-paper-heading{gap:15px}.wish-paper-heading>p{font-size:9px}.wish-paper-heading>p small{display:none}.wish-paper-message{font-size:24px;margin-left:10px;max-width:85%}.wish-paper-postage{flex-basis:50px;min-height:66px}.wish-paper-postage>i{font-size:31px}.wish-paper-heading .wish-paper-postage>small{font-size:6px}.wish-sealed-envelope{min-height:300px}.wish-wax-seal{width:77px;height:77px}.wish-wax-seal>span{font-size:42px}.wish-wax-seal>i{right:14px;top:27px}.wish-ticket-heading>span{display:none}.wish-ticket-main{padding:24px}.wish-ticket-stub{padding:24px 12px 17px}.wish-ticket-heading h4{font-size:17px}.wish-ticket-stub-title h4{font-size:14px}.wish-ticket-stub dt{flex-basis:26px}.wish-ticket-stub dl>div{gap:3px}.wish-ticket-stub dd{font-size:11px}.wish-ticket-message{font-size:21px}}
+@container (max-width:420px){.wish-moon-paper{padding:23px 21px 25px;min-height:360px;background-position:63% bottom;background-size:auto 100%}.wish-paper-heading>p{display:none}.wish-paper-heading h4{font-size:21px}.wish-paper-address{max-width:100%;font-size:18px;gap:12px;margin-top:22px}.wish-paper-message{font-size:22px;line-height:1.9;letter-spacing:.06em;max-width:100%;margin:23px 0 40px;min-height:100px}.wish-paper-footer{align-items:flex-start;flex-direction:column;gap:10px}.wish-paper-footer>span{max-width:100%;width:100%}.wish-paper-footer time{align-self:flex-end}.wish-sealed-envelope{min-height:250px;aspect-ratio:auto}.wish-envelope-title{top:11%}.wish-envelope-title strong{font-size:21px}.wish-envelope-title em{font-size:10px;letter-spacing:.07em;margin-top:10px}.wish-wax-seal{width:68px;height:68px;top:62%}.wish-wax-seal>span{font-size:36px}.wish-wax-seal>i{font-size:9px;right:13px;top:22px}.wish-wax-seal:before{inset:9px}.wish-envelope-poem{font-size:10px;bottom:10%}.wish-envelope-open-hint{font-size:8px;max-width:90px;line-height:1.8;text-align:right;bottom:9%}.wish-sealed-envelope>.wish-ink-postmark{width:23%;bottom:22%}.wish-moon-reply{padding:24px 21px}.wish-moon-reply .wish-paper-heading h4{font-size:14px;letter-spacing:.05em}.wish-reply-quotes{grid-template-columns:1fr}.wish-reply-quotes blockquote{font-size:14px;padding:15px 10px 15px 22px}.wish-reply-quotes blockquote:nth-child(odd){border-right:0}.wish-reply-quotes blockquote:before{top:10px;left:0}.wish-object-controls>button{padding:9px 11px;font-size:11px;min-height:44px}.wish-object-caption{font-size:13px;gap:8px;letter-spacing:.07em}.wish-object-caption small{font-size:8px}.wish-note-front,.wish-note-back{padding:26px 24px 22px;min-height:485px}.wish-note-address{font-size:22px;margin-top:42px}.wish-note-message{font-size:24px;margin-inline:0}.wish-note-signature{padding-bottom:58px;font-size:14px}.wish-note-foot{font-size:8px;gap:8px}.wish-note-foot small{font-size:6px}.wish-note-back .wish-note-message{font-size:21px;margin-top:54px}.wish-ticket-object{grid-template-columns:1fr;mask-image:radial-gradient(circle at 0 68%,transparent 12px,#000 13px),radial-gradient(circle at 100% 68%,transparent 12px,#000 13px);mask-composite:intersect}.wish-ticket-main{padding:23px 22px 18px}.wish-ticket-message{font-size:22px;line-height:1.9}.wish-ticket-stub{border-left:0;border-top:3px dotted #54473370;padding:16px 22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:10px;background:#cfb78515}.wish-ticket-stub:before,.wish-ticket-stub:after{display:none}.wish-ticket-stub-title{min-height:0;border:0;padding:0 10px 0 0}.wish-ticket-stub-title h4{font-size:17px}.wish-ticket-moon{right:10px;top:49px;font-size:28px}.wish-ticket-stub dl{margin:0;gap:5px}.wish-ticket-stub dt{flex-basis:26px;font-size:6px}.wish-ticket-stub dd{font-size:11px}.wish-ticket-collection{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;padding-top:7px;gap:8px}.wish-ticket-collection>span{font-size:8px}.wish-ticket-collection b{display:inline;font-size:9px}.wish-ticket-punched .wish-ticket-object,.wish-ticket-collected .wish-ticket-object{mask-image:radial-gradient(circle at 0 68%,transparent 12px,#000 13px),radial-gradient(circle at 100% 68%,transparent 12px,#000 13px),radial-gradient(circle at 52px calc(100% - 62px),transparent 10px,#000 11px);mask-composite:intersect}.wish-ticket-postmark{top:2px;left:8px;right:auto;width:105px}.wish-ticket-collected .wish-ticket-stub-title{padding-right:5px;min-height:60px}.wish-ticket-collected .wish-ticket-stub-title h4{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.wish-letter-wrap *,.wish-letter-wrap *:before,.wish-letter-wrap *:after{animation:none!important;transition:none!important}}
+.wish-moon-paper .wish-paper-footer time{background:#f6eeded9;padding:3px 7px;border-radius:2px;color:#354556;font-size:10px}
+.wish-note-foot>span{background:#f6ecd4b8;padding:3px 5px;margin-left:-5px;text-shadow:0 1px #fff6e2}
+.wish-note-message{text-wrap:balance}
+.wish-ticket-stub{background:#f0e3c8d9}
+.wish-envelope-flap:before{clip-path:polygon(0 12%,50% 99.3%,100% 12%,100% 13%,50% 100%,0 13%)}
