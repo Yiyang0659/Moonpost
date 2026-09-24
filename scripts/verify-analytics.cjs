@@ -16,3 +16,5 @@ t.api.startActivity('quiz');t.api.trackPage('/wall');assert.equal(t.sent.filter(
 for(const test of [boot('localhost'),boot('moonpost.pages.dev','1')]){test.api.initAnalytics();test.api.trackPage('/');assert.equal(test.scripts.length,0);assert.equal(test.sent.length,0);}
 const blocked=boot();blocked.api.initAnalytics();blocked.scripts[0].onerror();assert.doesNotThrow(()=>{blocked.api.trackPage('/');blocked.api.startActivity('parkour');blocked.api.finishActivity('parkour');});
 console.log('PASS: page deduplication, delayed SDK, captured routes, lifecycle, privacy fields, DNT, local exclusion, blocked SDK');
+
+t.api.trackPage('/letter/public-token');t.api.trackPage('/mailbox/public-token/private-secret');assert.equal(t.sent.at(-1).url,'/mailbox');assert.ok(!JSON.stringify(t.sent).includes('private-secret'));assert.ok(!JSON.stringify(t.sent).includes('public-token'));console.log('PASS: letter and mailbox capability tokens excluded from analytics');

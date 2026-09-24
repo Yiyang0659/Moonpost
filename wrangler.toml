@@ -1,0 +1,15 @@
+name = "moonpost"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-24"
+
+[[d1_databases]]
+binding = "LETTERS_DB"
+database_name = "moonpost-letters"
+database_id = "91af45b1-1576-46a1-b220-1c7fe01a4090"
+migrations_dir = "migrations"
+
+[[env.production.d1_databases]]
+binding = "LETTERS_DB"
+database_name = "moonpost-letters"
+database_id = "91af45b1-1576-46a1-b220-1c7fe01a4090"
+migrations_dir = "migrations"

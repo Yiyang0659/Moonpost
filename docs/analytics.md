@@ -53,3 +53,11 @@ SDK 动态异步加载，不等待其完成才渲染游戏；加载失败不影�
 `node scripts/verify-analytics.cjs`：页面去重、延迟 SDK 队列、路由快照、活动生命周期、隐私字段、DNT、本地排除、SDK失败。
 `npm run build`：类型与生产构建。
 发布后检查 cloud.umami.is 脚本和其上报请求返回成功，再去已登录的后台查看数据。
+
+## 云端信件
+
+- `letter_created`：云端封信成功，属性仅含 template。
+- `letter_share_link_copied`：复制好友拆信链接（不代表已在微信实际发送）。
+- `mailbox_link_copied`：复制私密入口。
+- 拆信/回信页面事件以 `letter_opened`、`reply_sent` 等为准，见页面调用。
+- 新页面访问统一归入 `/letter`、`/mailbox`，不上传真实信件路径、收件箱密钥、署名或正文。

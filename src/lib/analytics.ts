@@ -3,7 +3,8 @@ type Properties=Record<string,string|number|boolean>;
 type Payload=Record<string,unknown>;
 declare global {interface Window {moonAnalyticsBeforeSend?:(type:string,payload:Payload)=>Payload;umami?:{track:(payload:Payload)=>Promise<unknown>|void}}}
 const WEBSITE='a41616f5-45df-484f-a774-3d75c24b9b6d';
-const pages:Record<string,string>={'/':'首页','/mooncake':'月饼分拣站','/quiz':'月亮知识局','/persona':'月下身份所','/wall':'月光留言板','/parkour':'玉兔配送中','/postcard':'月球明信片','/certificate':'游园纪念证'};
+const pages:Record<string,string>={'/':'首页','/mooncake':'月饼分拣站','/quiz':'月亮知识局','/persona':'月下身份所','/wall':'月光留言板','/parkour':'玉兔配送中','/postcard':'月球明信片','/certificate':'游园纪念证','/letter':'拆开来信','/mailbox':'私密收件箱'};
+function cleanPath(path:string){if(/^\/letter(?:\/|$)/.test(path))return '/letter';if(/^\/mailbox(?:\/|$)/.test(path))return '/mailbox';return Object.hasOwn(pages,path)?path:'/unknown';}
 const fields=new Set(['station','stage','difficulty','score','correct','total','missed','max_combo','maxCombo','outcome','won','distance','coins','mooncakes','passports','result_id','result','is_edit','style','template','template_id','source','side','elapsed_seconds','reason','enabled']);
 let started=false,ready=false,failed=false,currentPath='/',lastPath='';
 const queue:Payload[]=[];
@@ -28,7 +29,7 @@ export function initAnalytics(){
   let path=typeof payload.url==='string'?payload.url:'/';
   try{if(path.startsWith('http')){const url=new URL(path);path=url.hash.startsWith('#/')?url.hash.slice(1):url.pathname;}}catch{path='/unknown';}
   path=path.split('?')[0];
-  const clean=Object.hasOwn(pages,path)?path:'/unknown';
+  const clean=cleanPath(path);
   return {...payload,url:clean,title:pages[clean]||'月球来信',referrer:referrer()};
  };
  const script=document.createElement('script');script.src='https://cloud.umami.is/script.js';script.async=true;
@@ -42,7 +43,7 @@ export function trackEvent(name:string,props:Properties={}){
  send({...base(),name,data:safe});
 }
 export function trackPage(path:string){
- const clean=Object.hasOwn(pages,path)?path:'/unknown';if(clean===lastPath)return;
+ const clean=cleanPath(path);if(clean===lastPath)return;
  if(active)finishActivity(active.station,{outcome:'abandoned',reason:'route_change'});
  currentPath=clean;lastPath=clean;
  send({...base(),data:{...campaign}});
