@@ -49,3 +49,25 @@
 .letter-envelope-sky{top:-93.3%}
 .letter-envelope-face{inset:55% 1% 1%;padding-top:6%;background:linear-gradient(180deg,transparent,#091a2b 28%,#091a2b 85%,#091a2b33);text-shadow:0 1px 3px #000}
 .letter-unseal-hint{ text-shadow:0 1px 6px #000,0 0 12px #07101f }
+/* Keep the pocket in front: the actual card slides out behind its upper edge. */
+.letter-envelope-back{z-index:0}
+.letter-envelope-art{z-index:3;clip-path:polygon(0 0,50% 60%,100% 0,100% 100%,0 100%);transition:none}
+.letter-envelope-flap{display:block;inset:0;z-index:4;clip-path:polygon(0 0,100% 0,50% 60%);border-radius:12px;background:url('/images/letters/navy-envelope.webp') center 51.5% / 110% auto no-repeat;transform-origin:50% 0;backface-visibility:hidden;filter:none;transition:none}
+.letter-envelope-paper{inset:8% 8% auto;display:block;z-index:2;background:transparent;height:auto;border-radius:4px;line-height:normal;letter-spacing:normal;transform:translateY(0);transition:none;box-shadow:none;overflow:hidden}
+.letter-envelope-paper .letter-artwork{width:100%;max-width:none;margin:0;filter:drop-shadow(0 3px 9px #0005)}
+.letter-envelope-paper .letter-artwork-portrait{max-height:none;width:100%;aspect-ratio:3/2;overflow:hidden}
+.letter-envelope-face{z-index:4;transition:none}
+.is-opening .letter-envelope-art,.is-opening .letter-envelope-face{opacity:1;transform:none}
+.is-opening .letter-envelope-flap{z-index:4;animation:letter-flap-lift 1s .25s cubic-bezier(.4,0,.2,1) both}
+.is-opening .letter-envelope-paper{z-index:2;animation:letter-card-withdraw 2s .85s cubic-bezier(.22,.61,.36,1) both;transition:none}
+.is-opening .letter-wax{animation:letter-seal-release .45s ease-out both;transition:none}
+.is-opening .letter-envelope{animation:letter-envelope-exit .3s 2.8s ease-in both}
+@keyframes letter-flap-lift{from{transform:rotateX(0)}to{transform:rotateX(175deg)}}
+@keyframes letter-card-withdraw{0%{transform:translateY(0)}75%{transform:translateY(-63%)}100%{transform:translateY(-68%)}}
+@keyframes letter-seal-release{0%{opacity:1;transform:scale(1)}55%{opacity:.7;transform:translateY(-5px) scale(1.08) rotate(-8deg)}100%{opacity:0;transform:translateY(-12px) scale(1.12) rotate(-12deg)}}
+@keyframes letter-envelope-exit{to{opacity:0;transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.is-opening .letter-envelope,.is-opening .letter-envelope-flap,.is-opening .letter-envelope-paper,.is-opening .letter-wax{animation:none}}
+.letter-intro{transition:opacity .35s ease,transform .35s ease}
+.moon-letter-page:has(.is-opening) .letter-intro{opacity:0;transform:translateY(-6px);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.letter-intro{transition:none}}
+.letter-envelope-paper{inset:5% 10% auto}
