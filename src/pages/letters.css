@@ -14,3 +14,38 @@
 .ambient-paused .moon-letter-page::before,.ambient-paused .moon-letter-page::after{animation-play-state:paused}
 @media(max-width:600px){.letter-brand-icon{flex-basis:44px;width:44px;height:44px;background-size:185px 139px;background-position:-13px -16px}.letter-roam-button{min-height:48px;font-size:13px;padding:9px 17px 9px 55px;gap:15px}.letter-roam-button::before{width:35px;height:35px}.letter-roam-row{margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.moon-letter-page::before,.moon-letter-page::after{animation:none;opacity:.4}.letter-roam-button,.letter-roam-button>span{transition:none}}
+/* Supplied paper and wax remain separate from the live recipient label. */
+.letter-unseal{max-width:620px;margin:58px auto 60px}
+.letter-envelope{aspect-ratio:1.68;filter:drop-shadow(0 18px 32px #0008) drop-shadow(0 0 20px #ebc58c26)}
+.letter-envelope-art{position:absolute;inset:0;border-radius:12px;background:url('/images/letters/navy-envelope.webp') center 51.5% / 110% auto no-repeat;z-index:2;transition:opacity .7s .35s,transform .9s .3s}
+.letter-envelope-back{background:#0b1b2c;border:1px solid #d8bb8666}
+.letter-envelope-flap{display:none}
+.letter-envelope-face{inset:61% 2% 2%;padding:12px 14px 18px;justify-content:center;background:linear-gradient(180deg,#091a2be6,#091a2b 22%,#091a2bf5 88%,#091a2be0);border:0;border-radius:0 0 10px 10px;transition:opacity .5s,transform .7s}
+.letter-envelope-face p{margin:8px 0;color:#edc997;font-size:clamp(15px,2.5vw,23px);max-width:100%;overflow-wrap:anywhere;letter-spacing:3px}
+.letter-envelope-face small{font-size:9px;color:#e4be86}
+.letter-envelope-face>span{font-size:8px;letter-spacing:3px}
+.moon-letter-page .letter-wax{width:104px;height:104px;left:calc(50% - 52px);top:calc(46% - 52px);padding:0;border:0;background:none;box-shadow:none;filter:drop-shadow(0 3px 5px #0009) drop-shadow(0 0 10px #ffd29455);transition:transform .35s,filter .35s,opacity .4s}
+.letter-wax img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.letter-wax:hover{transform:scale(1.07);filter:drop-shadow(0 0 15px #ffdb90aa)}
+.is-opening .letter-wax{transform:scale(1.2) rotate(-12deg);opacity:0}
+.is-opening .letter-envelope-art{opacity:0;transform:translateY(18px) scale(.97)}
+.is-opening .letter-envelope-face{opacity:0;transform:translateY(18px)}
+.is-opening .letter-envelope-paper{z-index:3;transform:translateY(-20%);transition:transform 1s .3s}
+.letter-random-stars{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.letter-random-stars i{position:absolute;border-radius:50%;background:var(--star-tone);box-shadow:0 0 6px 1px var(--star-tone);opacity:.16;animation:letter-independent-glimmer ease-in-out infinite}
+.letter-random-stars i:nth-child(9n)::after{content:'';position:absolute;inset:-4px;background:var(--star-tone);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+.moon-letter-page::before,.moon-letter-page::after{animation:none;opacity:.12}
+@keyframes letter-independent-glimmer{0%,20%,100%{opacity:.08;transform:scale(.65)}48%{opacity:.8;transform:scale(1.1)}62%{opacity:.27;transform:scale(.85)}}
+.ambient-paused .letter-random-stars i{animation-play-state:paused}
+@media(max-width:600px){.letter-unseal{margin:65px auto 48px}.moon-letter-page .letter-wax{width:72px;height:72px;left:calc(50% - 36px);top:calc(45% - 36px)}.letter-envelope-face{padding:8px 5px}.letter-envelope-face small{font-size:6px;letter-spacing:1.5px}.letter-envelope-face p{font-size:15px;letter-spacing:1px;margin:5px 0}.letter-envelope-face>span{font-size:6px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){.letter-random-stars i{animation:none;opacity:.4}.letter-envelope-art,.letter-envelope-face,.moon-letter-page .letter-wax{transition:none}}
+/* One coordinate system: artwork horizon (74.4%) meets the envelope bottom. */
+.moon-letter-page{overflow:hidden}
+.letter-envelope-sky{position:absolute;z-index:-2;pointer-events:none;width:274.1%;aspect-ratio:1672/941;left:-87.05%;top:-88%;background:url('/images/letters/envelope-sky.webp') center / 100% 100% no-repeat;mask-image:radial-gradient(ellipse 64% 67% at 50% 52%,#000 50%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 64% 67% at 50% 52%,#000 50%,transparent 100%)}
+.letter-envelope{isolation:isolate;filter:none}
+.letter-envelope-art{filter:drop-shadow(0 10px 16px #0009)}
+.letter-brand,.letter-intro,.letter-footer,.letter-unseal-hint,.letter-unseal>.letter-text-button{position:relative;z-index:6}
+.letter-envelope-sky{mask-image:linear-gradient(transparent,#000 20%,#000 79%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 20%,#000 79%,transparent)}
+.letter-envelope-sky{top:-93.3%}
+.letter-envelope-face{inset:55% 1% 1%;padding-top:6%;background:linear-gradient(180deg,transparent,#091a2b 28%,#091a2b 85%,#091a2b33);text-shadow:0 1px 3px #000}
+.letter-unseal-hint{ text-shadow:0 1px 6px #000,0 0 12px #07101f }
